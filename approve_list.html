@@ -27,7 +27,7 @@
 
 			<div id="pullrefresh" class="">
 				<div class="mui-scroll mb20">
-					<ul class="p20"></ul>
+					<ul id="ul_workList" class="p20"></ul>
 				</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 				done_ok.addEventListener('tap', function() {
 					var checkedValues = selectAny();
 					if(checkedValues.length > 0) {
-						mui.alert('你通过了: ' + checkedValues);
+						//mui.alert('你通过了: ' + checkedValues);
 						shenPi("通过",checkedValues);
 					} else {
 						mui.alert('你没通过任何机场');
@@ -95,16 +95,16 @@
 			
 			function shenPi(statusU,idss) {
 				var url = plus.storage.getItem("url") + plus.storage.getItem("approvalAll_jiayou");
-				console.log("===" + url+"?checkStatus="+statusU+"&idss="+idss);
+				console.log( url+"?checkStatus="+statusU+"&idss="+idss+"&username="+plus.storage.getItem("username")+"&name="+plus.storage.getItem("userRealname"));
 				mui.ajax(url, {
-					type: 'post',
+					type: 'post', 
 					dataType: 'json',
 					timeout: 10000 * 60,
 					data: {
 						ownerName: plus.storage.getItem("username"),
-						checkStatus: statusU,
-						intIds: idss,
-						userName:plus.storage.getItem("userRealname")
+						checkStatus: statusU+"",
+						intIds: idss+"",
+						  userName:plus.storage.getItem("userRealname")
 					},
 					success: function(response) {
 						plus.nativeUI.closeWaiting();
@@ -114,7 +114,6 @@
 						if(data.result == true) {
 							mui.alert(data.message);
 						} else {
-							mui('#pullrefresh').pullRefresh().endPullup(true);
 							mui.alert(data.message);
 						}
 					},
@@ -173,12 +172,12 @@
 							for(var i = 0; i < resultList.length; i++) {
 								var li = document.createElement('li');
 
-								var mTitle = resultList[i].fuelcardNo; //油卡编号 
+								var mTitle = resultList[i].applicantTime; //油卡编号 申请时间
 								var mMany = resultList[i].preEstimateFuelvolume; //预估加油量
-								var mTime = resultList[i].applicantTime; //申请时间
+								var mTime = resultList[i].intId; //油卡编号
 								var mAdress = resultList[i].belongDaiweiCompany; //所属代维公司
 
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>申请时间："+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li);
 							}
 							count += 1;
@@ -225,12 +224,12 @@
 								return;
 							}
 							for(var i = 0; i < resultList.length; i++) {
-								var mTitle = resultList[i].fuelcardNo; //油卡编号 
+								var mTitle = resultList[i].applicantTime; //油卡编号 申请时间
 								var mMany = resultList[i].preEstimateFuelvolume; //预估加油量
-								var mTime = resultList[i].applicantTime; //申请时间
+								var mTime = resultList[i].intId; //油卡编号
 								var mAdress = resultList[i].belongDaiweiCompany; //所属代维公司
 
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>申请时间："+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li);
 							}
 							count = 1;

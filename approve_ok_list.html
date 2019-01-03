@@ -27,7 +27,7 @@
 
 			<div id="pullrefresh" class="">
 				<div class="mui-scroll mb20">
-					<ul class="p20"></ul>
+					<ul id="ul_workList" class="p20"></ul>
 				</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 				done_ok.addEventListener('tap', function() {
 					var checkedValues = selectAny();
 					if(checkedValues.length > 0) {
-						mui.alert('你通过了: ' + checkedValues);
+						//mui.alert('你通过了: ' + checkedValues);
 						shenPi("通过",checkedValues);
 						
 					} else {
@@ -104,7 +104,7 @@
 					data: {
 						ownerName: plus.storage.getItem("username"),
 						checkStatus: statusU,
-						intIds: idss,
+						intIds: idss+"",
 						userName:plus.storage.getItem("userRealname")
 					},
 					success: function(response) {
@@ -172,11 +172,11 @@
 
 								var mTitle = resultList[i].addoilfuelcardNo; //油卡编号 
 								var mMany = resultList[i].addoilfuelVolume; //预估加油量
-								var mTime = resultList[i].addoilfuelTime; //申请时间
-								var mAdress = resultList[i].applicant; //所属代维公司
+								var mTime = resultList[i].intId; //申请时间
+								var mAdress = resultList[i].addoilfuelTime; //所属代维公司
 
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>申请时间："+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>上报人：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
-								table.appendChild(li);
+								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>申请时间：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								table.appendChild(li); 
 							}
 							count += 1;
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh(resultList.length < 20); //参数为true代表没有更多数据了。
@@ -224,10 +224,10 @@
 							for(var i = 0; i < resultList.length; i++) {
 								var mTitle = resultList[i].addoilfuelcardNo; //油卡编号 
 								var mMany = resultList[i].addoilfuelVolume; //预估加油量
-								var mTime = resultList[i].addoilfuelTime; //申请时间
-								var mAdress = resultList[i].applicant; //所属代维公司
+								var mTime = resultList[i].intId; //申请时间
+								var mAdress = resultList[i].addoilfuelTime; //所属代维公司
 
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>申请时间："+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>上报人：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>申请时间：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li);
 							}
 							count = 1;
