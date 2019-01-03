@@ -1,6 +1,6 @@
 {
     "@platforms" : [ "android", "iPhone", "iPad" ],
-    "id" : "com.inspur.ynfd", /*应用的标识，创建应用时自动生成，勿手动修改*/
+    "id" : "com.inspur.ynfd2", /*应用的标识，创建应用时自动生成，勿手动修改*/
     "name" : "YNfadian", /*应用名称，程序桌面图标名称*/
     "version" : {
         "name" : "1.0.0", /*应用版本名称*/
@@ -344,6 +344,14 @@
 				"refer": [
 					"approve_info.html",
 					"approve_ok_info.html"
+				],
+				"priority": 0
+			},
+			"jymanage/jyApply.html": {
+				"resources": [],
+				"refer": [
+					"jymanage/jyCityList.html",
+					"jymanage/jyYkbhtyList.html"
 				],
 				"priority": 0
 			}
