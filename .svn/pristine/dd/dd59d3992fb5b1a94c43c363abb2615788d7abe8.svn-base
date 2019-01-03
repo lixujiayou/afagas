@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<!--	<link href="../css/mui.min.css" rel="stylesheet" />-->
+		<link href="../css/font-awesome.min.css" rel="stylesheet" />
+		<link href="../css/userStyle.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.css"/>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择</h1>
+		</header>
+
+		<div class="mui-content">
+			<!--<div class="tc user-btn-box bordertop" id="btnDiv">
+				<div class="pb10">
+					
+					<div class="mui-row">
+						<div class="mui-col-xs-9">
+							<div class="pl10 pr5">
+								<input placeholder="" type="text" id="popTitler" class="user-normal-input2"></input>
+							</div>
+						</div>
+						
+						<div class="mui-col-xs-3">
+							<div class="pl5 pr5">
+								<button id="okbtn" class="btn mui-btn-blue btn-block">搜索</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+
+			<div id="pullrefresh" class="mui-content">
+					<ul id="ul_workList" class="orderlist">
+				</ul> 
+			</div>
+			
+		</div>
+	</body>
+
+</html>
+<script src="../js/mui.js"></script>
+<script type="text/javascript">
+	var workList;
+	var popTitler;
+	var okbtn;
+
+	
+
+	mui.plusReady(function() {
+		popTitler = document.getElementById("popTitler");
+		//		okbtn = document.getElementById("okbtn");
+		//		
+		//		okbtn.addEventListener("tap",function(){
+		//			var strKey = popTitler.value;
+		//			console.log("===="+strKey);
+		//			if(strKey != null && strKey.length > 0){
+		//				gettypeList(); 
+		//			}else{
+		//				mui.toast("请输入关键字查询");
+		//			}
+		//		})
+		//plus.nativeUI.showWaiting("正在查询...");
+		//gettypeList(); 
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: { 
+					style: 'circle',
+					callback: pulldownRefresh
+				},
+				up: { 
+					auto: true,
+					contentrefresh: '正在加载...',
+					callback: gettypeList
+				}
+			}
+		});
+		
+	});
+
+	/**
+	 * 页数
+	 */
+	var count = 1;
+	/**
+	 *查询列表  
+	 * 初始化时
+	 */
+	function gettypeList() {
+		console.log("gettypeList");
+		var table = document.body.querySelector('.orderlist');
+		var url = plus.storage.getItem("url") + plus.storage.getItem("findPage2EasyUI");
+		console.log("===" + url);
+		mui.ajax(url, { 
+			type: 'get',
+			dataType: 'json',
+			timeout: 10000 * 60, 
+			data: {
+				page: count,
+				rows: "20",
+				conditions: ""
+			},
+			success: function(response) {
+				plus.nativeUI.closeWaiting();
+				var result = JSON.stringify(response);
+				console.log("上拉返回的结果：" + result);
+				var data = JSON.parse(result);
+
+				var resultList = data.rows;
+				if(typeof(workList) == "undefined") {
+					workList = resultList;
+				} else {
+							for(var i = 0; i < resultList.length; i++) {
+								workList.push(resultList[i]);
+							}
+				}
+				if(resultList == null || resultList.length < 1) {
+					mui.toast("没有查询信息");
+					return;
+				}
+				for(var i = 0; i < resultList.length; i++) {
+					var projecttname = resultList[i].zhLabel;
+					var userName = resultList[i].roomtype;
+
+					var div = document.createElement('ul');
+					div.className = "mui-table-view mui-table-view-chevron";
+					div.innerHTML = "<li class='mui-media' onclick=callback(" + i + ") style='padding-left: 15px;padding-right: 15px;padding-top: 10px;padding-bottom: 5px;'><a class='mui-navigate'><div class='mui-media-body'><b class='f16'><i class='fa fa-circle-o mr5 font-green'></i>" + userName + "</b><p class=' mt10'><i class='fa fa-calendar mr5'></i>" + projecttname + "</p></div></a></li>";
+							
+					table.appendChild(div);
+				}
+				count += 1;
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(resultList.length < 20); //参数为true代表没有更多数据了。
+
+			},
+			error: function(xhr, type, errorThrown) {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
+				mui.alert(xhr.status);
+				plus.nativeUI.closeWaiting();
+				console.log("error:" + xhr.response);
+				console.log("error:" + xhr.status);
+			}
+		});
+	}
+
+	/**
+	 *下拉刷新 
+	 */
+	function addData() {
+		var table = document.body.querySelector('.orderlist');
+		var url = plus.storage.getItem("url") + plus.storage.getItem("findPage2EasyUI");
+		console.log("===" + url);
+		mui.ajax(url, {
+			type: 'get',
+			dataType: 'json',
+			timeout: 10000 * 60,
+			data: {
+				page: "1",
+				rows: "20",
+				conditions: ""
+			},
+			success: function(response) {
+				count = 1;
+				plus.nativeUI.closeWaiting();
+				var result = JSON.stringify(response);
+				console.log("下拉返回的结果：" + result);
+				var data = JSON.parse(result);
+
+				var resultList = data.rows;
+				if(typeof(workList) == "undefined") {
+					workList = resultList;
+				} else {
+					workList.length = 0;
+					workList = resultList;
+				}
+				ul_workList.innerHTML = ""; //清空之前的列表
+				if(resultList == null || resultList.length < 1) {
+					mui.toast("暂无相关审批人");
+					return;
+				}
+				for(var i = 0; i < resultList.length; i++) {
+					var projecttname = resultList[i].zhLabel;
+					var userName = resultList[i].roomtype;
+
+					var div = document.createElement('ul');
+					div.className = "mui-table-view mui-table-view-chevron";
+					div.innerHTML = "<li class='mui-media' onclick=callback(" + i + ") style='padding-left: 15px;padding-right: 15px;padding-top: 10px;padding-bottom: 5px;'><a class='mui-navigate'><div class='mui-media-body'><b class='f16'><i class='fa fa-circle-o mr5 font-green'></i>" + userName + "</b><p class=' mt10'><i class='fa fa-calendar mr5'></i>" + projecttname + "</p></div></a></li>";
+					table.appendChild(div);
+				}
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(resultList.length < 20); //参数为true代表没有更多数据了。
+				mui('#pullrefresh').pullRefresh().endPulldown();
+			},
+			error: function(xhr, type, errorThrown) {
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
+				mui.alert(xhr.status);
+				plus.nativeUI.closeWaiting();
+				console.log("error:" + xhr.response);
+				console.log("error:" + xhr.status);
+			}
+		});
+	}
+
+	function pulldownRefresh() {
+		addData();
+	}
+
+	function callback(num) {
+		var bean = workList[num];
+		plus.storage.setItem("select_room_id", bean.roomCode);//编号
+		plus.storage.setItem("select_room_name", bean.zhLabel);//名称
+		plus.storage.setItem("select_room_adress", bean.address);//位置
+		console.log("=====" + plus.storage.getItem("select_room_id"));
+		var detailPage1 = plus.webview.getWebviewById('fdNewOrder.html');
+		mui.fire(detailPage1, "f_d", ""); 
+		
+		var detailPage2 = plus.webview.getWebviewById('jyApply.html');
+		mui.fire(detailPage2, "f_d", ""); 
+		
+		var detailPage2 = plus.webview.getWebviewById('power_add.html');
+		mui.fire(detailPage2, "f_d", ""); 
+		
+		mui.back();
+	}
+</script>
