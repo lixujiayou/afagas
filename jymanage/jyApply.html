@@ -82,11 +82,16 @@
 						</li>
 						<li>
 							<label class="jyapply_li_lable">预估加油金额（元）:</label>
-							<input id="jy_apply_ygjyje" class="jyapply_li_input" />
+							<input id="jy_apply_ygjyje" class="jyapply_li_input"  style="margin-top: 15px;"/>
 						</li>
 						<li>
 							<label class="jyapply_li_lable">加油原因:</label>
 							<input id="jy_apply_jyyy" class="jyapply_li_input" />
+						</li>
+						
+						<li>
+							<label class="jyapply_li_lable">审核人:</label>
+							<a id="shen_he_ren" class="jyapply_li_a">请选择审核人</a>
 						</li>
 
 						<li>
@@ -101,10 +106,7 @@
 							<label class="jyapply_li_lable">申请时间:</label>
 							<input id="input_apply_time" class="jyapply_li_input" disabled="disabled" />
 						</li>
-						<li>
-							<label class="jyapply_li_lable">审核人:</label>
-							<a id="shen_he_ren" class="jyapply_li_a">请选择审核人</a>
-						</li>
+						
 
 
 					</ul>
@@ -220,7 +222,7 @@
 
 					document.addEventListener('f_ykbh', function(event) {
 						//var guid = event.detail.guid;
-						jy_apply_ykbh.innerText = plus.storage.getItem("select_ykbh_name");
+						jy_apply_ykbh.innerText = plus.storage.getItem("select_ykbh_id");
 
 					});
 
