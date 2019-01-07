@@ -16,8 +16,8 @@
 			<h1 class="mui-title">发电拍照列表</h1>
 		</header>
 		<footer class="mui-bar mui-bar-footer" id="assort_footer">
-			<button id="btn_confirm" class="mui-btn-blue" style="width: 50%;height: 90%;">上传</button>
-			<button id="btn_cancel" class="mui-btn-blue" style="width: 50%;height: 90%;">返回</button>
+			<button id="btn_confirm" class="mui-btn-blue" style="width: 80%;height: 80%;margin-left: 10%;margin-top: 5px;">上传</button>
+		
 
 		</footer>
 		<div class="mui-content mui-scroll">
@@ -126,7 +126,7 @@
 								imageList.options.size + '张</h6></button>'
 							imageList.innerHTML = addButtonHtml;
 
-							if ("A" == plus.storage.getItem("siteUserRole")) {
+					
 								imageList.addButton = imageList.querySelector(".button-item");
 								imageList.addButton.addEventListener("tap", function() {
 
@@ -166,7 +166,7 @@
 
 								}, false);
 
-							}
+							
 
 							/**
 							 * @param {Object} p 此次添加的个数
