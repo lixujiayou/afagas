@@ -1,6 +1,6 @@
 {
     "@platforms" : [ "android", "iPhone", "iPad" ],
-    "id" : "com.inspur.ynfd2", /*应用的标识，创建应用时自动生成，勿手动修改*/
+    "id" : "com.inspur.ynfd", /*应用的标识，创建应用时自动生成，勿手动修改*/
     "name" : "YNfadian", /*应用名称，程序桌面图标名称*/
     "version" : {
         "name" : "1.0.0", /*应用版本名称*/
@@ -102,8 +102,8 @@
                 "ios" : {
                     "iphone" : {
                         "default" : "", /*iPhone3启动图片选，分辨率：320x480*/
-                        "retina35" : "", /*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-                        "retina40" : ""
+                        "retina35" : "/Users/lixu/Desktop/inspur/bg.png", /*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+                        "retina40" : "/Users/lixu/Desktop/inspur/bg.png","retina47":"/Users/lixu/Desktop/inspur/bg.png","retina55":"/Users/lixu/Desktop/inspur/bg.png","retina55l":"/Users/lixu/Desktop/inspur/bg.png"
                     },
                     "ipad" : {
                         "portrait" : "", /*iPad竖屏启动图片，分辨率：768x1004*/
@@ -119,9 +119,9 @@
                 "android" : {
                     "mdpi" : "", /*普通屏启动图片，分辨率：240x282*/
                     "ldpi" : "", /*大屏启动图片，分辨率：320x442*/
-                    "hdpi" : "", /*高分屏启动图片，分辨率：480x762*/
-                    "xhdpi" : "", /*720P高分屏启动图片，分辨率：720x1242*/
-                    "xxhdpi" : ""
+                    "hdpi" : "/Users/lixu/Desktop/inspur/bg.png", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi" : "/Users/lixu/Desktop/inspur/bg.png", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi" : "/Users/lixu/Desktop/inspur/bg.png"
                 }
             },
             "plugins" : {"maps":{"baidu":{"appkey_ios":"Mgn13f9QezWeWKtyZfPogXInLPuIZ9CW","appkey_android":"Atpyfti6QvMvevRLfZq2xcAQS4QT7vSa","appkey":"","description":""}},
