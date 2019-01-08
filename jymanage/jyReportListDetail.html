@@ -49,7 +49,7 @@
 
 	<header class="mui-bar mui-bar-nav">
 		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		<h1 class="mui-title">加油上报详情</h1>
+		<h1 class="mui-title">加油申请详情</h1>
 	</header>
 
 	<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
@@ -64,12 +64,14 @@
 			<li><b>加油原因</b><i id="fuelReason"></i></li>
 			<li><b>所属地市</b><i id="belongDs"></i></li>
 			<li><b>所属区县</b><i id="belongQx"></i></li>
+			<li><b>所属代维公司</b><i id="belongDaiweiCompany"></i></li>
 			<li><b>申请人</b><i id="applicant"></i></li>
 
+
 			<li><b>申请时间</b><i id="applicantTime"></i></li>
-			<li><b>审核意见</b><i id="checkSuggestion"></i></li>
 			<li><b>审核人</b><i id="checkMan"></i></li>
-			<li><b>所属代维公司</b><i id="belongDaiweiCompany"></i></li>
+			<li><b>审核状态</b><i id="checkSuggestion"></i></li>
+			
 		</ul>
 
 
@@ -192,10 +194,10 @@
 							applicantTime.innerHTML = currentXxWebView.data.applicantTime;
 						}
 
-						if (currentXxWebView.data.checkSuggestion == null) {
+						if (currentXxWebView.data.checkStatus == null) {
 							checkSuggestion.innerHTML = "null";
 						} else {
-							checkSuggestion.innerHTML = currentXxWebView.data.checkSuggestion;
+							checkSuggestion.innerHTML = currentXxWebView.data.checkStatus;
 						}
 
 						if (currentXxWebView.data.checkMan == null) {

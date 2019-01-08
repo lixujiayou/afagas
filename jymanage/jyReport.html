@@ -90,7 +90,6 @@
 
 					</ul>
 
-
 					<!-- 样例图片部分 -->
 					<div class="user-info-list" style="margin-left: 20px; margin-top: 20px;">样例图片</div>
 
@@ -99,19 +98,13 @@
 						<img src="../images/loginbg.jpg" data-preview-src="" data-preview-group="1" style="width: 60px;height: 60px; text-align: center;" />
 						<img src="../loginbg.png" data-preview-src="" data-preview-group="1" style="width: 60px;height: 60px;" />
 
-
 					</div>
-
 
 					<!-- 拍照部分 -->
 					<div id="div_otherImgList5" style="padding: 10px;">
 						<div style="text-align: center;">现场照片拍照</div>
 						<div id="otherImgList5" style="bottom: 20px;"></div>
 					</div>
-
-
-
-
 
 
 				</div>
@@ -204,6 +197,7 @@
 				flowId = JSON.parse(JSON.stringify(currentXxWebView.data)).flowId;
 				gdNo = JSON.parse(JSON.stringify(currentXxWebView.data)).gdNo;
 				jy_ykbh.value = JSON.parse(JSON.stringify(currentXxWebView.data)).fuelcardNo;
+				jy_lx.innerText = JSON.parse(JSON.stringify(currentXxWebView.data)).fuelType;
 
 				btn_submit.addEventListener('click', function() {
 
@@ -474,7 +468,7 @@
 												ctx.drawImage(Img, 0, 0, width, height);
 												ctx.font = "bold 50px microsoft yahei";
 												ctx.fillStyle = "rgba(255,0,0,1)";
-												ctx.fillText("经纬度:" + currentlati + "," + currentlongti, 25, height - 200, width - 10);
+												ctx.fillText("纬度:" + currentlati.toFixed(6) + ",经度:" + currentlongti.toFixed(6), 25, height - 200, width - 10);
 												ctx.fillText("拍照时间:" + getNowFormatDate(), 5, height - 100, width - 10);
 												console.log("3===================================");
 												var data = myCanvas.toDataURL();
@@ -584,7 +578,8 @@
 			}
 
 
-
+			
+			//获取当前时间
 			function getNowFormatDate() {
 				var date = new Date();
 				var seperator1 = "-";
@@ -609,6 +604,8 @@
 				submitDate = date.getFullYear() + seperator1 + month + seperator1 + strDate +
 					" " + date.getHours() + seperator2 + strMin +
 					seperator2 + strSecond;
+					
+					jy_jysj.innerText = submitDate;
 
 				return submitDate;
 

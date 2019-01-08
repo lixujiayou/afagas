@@ -24,7 +24,8 @@
 		return [].slice.call($.__create_dom_div__.childNodes);
 	};
 
-	var panelBuffer = '<div class="mui-poppicker">\
+	var panelBuffer =
+		'<div class="mui-poppicker">\
 		<div class="mui-poppicker-header">\
 			<button class="mui-btn mui-poppicker-btn-cancel">取消</button>\
 			<button class="mui-btn mui-btn-blue mui-poppicker-btn-ok">确定</button>\
@@ -34,7 +35,8 @@
 		</div>\
 	</div>';
 
-	var pickerBuffer = '<div class="mui-picker">\
+	var pickerBuffer =
+		'<div class="mui-picker">\
 		<div class="mui-picker-inner">\
 			<div class="mui-pciker-rule mui-pciker-rule-ft"></div>\
 			<ul class="mui-pciker-list">\
@@ -112,8 +114,8 @@
 		getSelectedItems: function() {
 			var self = this;
 			var items = [];
-			for (var i in self.pickers) {    
-				if(self.pickers.hasOwnProperty(i)) { // 修复for in会访问继承属性造成items报错情况
+			for (var i in self.pickers) {
+				if (self.pickers.hasOwnProperty(i)) { // 修复for in会访问继承属性造成items报错情况
 					var picker = self.pickers[i];
 					items.push(picker.getSelectedItem() || {});
 				}
@@ -128,10 +130,7 @@
 			document.body.classList.add($.className('poppicker-active-for-page'));
 			self.panel.classList.add($.className('active'));
 			//处理物理返回键
-			self.__back = $.back;
-			$.back = function() {
-				self.hide();
-			};
+			
 		},
 		//隐藏
 		hide: function() {
@@ -141,7 +140,7 @@
 			self.mask.close();
 			document.body.classList.remove($.className('poppicker-active-for-page'));
 			//处理物理返回键
-			$.back=self.__back;
+			
 		},
 		dispose: function() {
 			var self = this;
