@@ -366,9 +366,10 @@
 						var result = JSON.stringify(response);
 						console.log("全选接口：" + result);
 						var data = JSON.parse(result);
-						if(data.result == true) {
-							mui.alert(data.message);
-							mui.back();
+						if(data.success == true) {
+							mui.alert(data.message, '提示', function() {
+								mui.back();
+							});
 						} else {
 							mui.alert(data.message);
 						}
