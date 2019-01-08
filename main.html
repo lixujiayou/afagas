@@ -36,19 +36,14 @@
 						<div class="mui-media-body">发电管理</div>
 					</a>
 				</li>
-				<li class="bg3">
+				<li class="bg3" style="display: none;">
 					<a id="id_zxkc" href="javascript:void(0);">
 						<span class="mui-icon"><img src="images/zxks.png" height="40dp" /></span>
 						<div class="mui-media-body">待办列表</div>
 					</a>
 				</li>
-				<li class="bg7">
-					<a id="id_czsc" href="Javascript:void(0);">
-						<span class="mui-icon"><img src="images/czsc.png" height="40dp" /></span>
-						<div class="mui-media-body">统计分析</div>
-					</a>
-				</li>
-				<li class="bg1">
+				
+				<li class="bg1" style="display: none;">
 					<a id="id_zygl" href="Javascript:void(0);">
 						<span class="mui-icon"><img src="images/zygl.png" height="40dp" /></span>
 						<div class="mui-media-body">新建发电工单</div>
@@ -59,6 +54,12 @@
 						<span class="mui-icon"><img src="images/zygl.png" height="40dp" /></span>
 						<div class="mui-media-body">长期发电管理
 						</div>
+					</a>
+				</li>
+				<li class="bg7">
+					<a id="id_czsc" href="Javascript:void(0);">
+						<span class="mui-icon"><img src="images/czsc.png" height="40dp" /></span>
+						<div class="mui-media-body">切换账号</div>
 					</a>
 				</li>
 
@@ -168,10 +169,21 @@
 					mui.toast("待开发");
 					//				mui.openWindow({url:"onlineexam/indexExam.html",id:"onlineexam/indexExam.html", createNew:false})
 				});
-				//操作手册
+				//切换账号
 				czsc.addEventListener('tap', function() {
-					mui.toast("待开发");
-					//				mui.openWindow({url:"czsc/czsc.html",id:"czsc/czsc.html", createNew:false})
+					// 获取所有Webview窗口
+					var curr = plus.webview.currentWebview();
+					var wvs = plus.webview.all();
+					for(var i = 0, len = wvs.length; i < len; i++) {
+						//关闭除setting页面外的其他页面
+						if(wvs[i].getURL() != curr.getURL()){
+							plus.webview.close(wvs[i]);
+						}else{
+							
+						}
+					}
+						plus.webview.open('login.html');
+						curr.close();
 				});
 				//资源管理
 				zygl.addEventListener('tap', function() {
