@@ -11,6 +11,7 @@
 		<link href="../css/font-awesome.min.css" rel="stylesheet" />
 		<link href="../css/mui.poppicker.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main.css" />
+		<link href="../css/mui.picker.min.css" rel="stylesheet" />
 		<style>
 			.jyapply_li_lable{
 				text-align: center;
@@ -320,50 +321,59 @@
 							}
 						);
 					});
+					
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: '是',
+						text: '是'
+					}, {
+						value: '不是',
+						text: '不是'
+					}]);
+					et_isAssist.addEventListener("click",function(){
+						userPicker.show(function(items) {
+							
+							if(et_isAssist.innerText != items[0].value){
+								changeDaiW(items[0].value);
+							}
+							et_isAssist.innerText = items[0].value;
+						});
+					});
 				}
-				//				function changeType() {
-				//				var url = plus.storage.getItem("url") + plus.storage.getItem("fd_changeType.ilf");
-				//				var submitWating = plus.nativeUI.showWaiting("初始化发电场景...");
-				//				mui.ajax({
-				//					url: url,
-				//					type: 'post',
-				//					dataType: 'json',
-				//					data: {
-				//						orderId: et_orderId.value,
-				//						type: dian_type.value,
-				//					},
-				//					timeout: 10000, //5秒超时
-				//					success: function(response) {
-				//						var result = JSON.stringify(response);
-				//						var data = JSON.parse(result);
-				//
-				//						console.log("发电发起流程结果====" + result);
-				//
-				//						if (true == data.success) {
-				//
-				//							plus.storage.setItem("order_id_start",et_orderId.value+"");
-				//							mui.openWindow("fdStart.html");  
-				//											
-				////							flowId = data.flowId;
-				////							formNo = data.formNo;
-				//							//startProces2();
-				//
-				//						} else {
-				//
-				//							submitWating.close();
-				//						}
-				//						submitWating.close();
-				//					},
-				//					error: function(xhr, type, errorThrown) {
-				//						console.log(xhr.response);
-				//						console.log(xhr.status + url);
-				//						submitWating.close();
-				//					}
-				//
-				//				});
-				//
-				//
-				//			}
+				
+				function changeDaiW(mIsAssist) {
+					plus.nativeUI.showWaiting("正在更新...")
+					var url = plus.storage.getItem("url") + plus.storage.getItem("changeAssist");
+					console.log("change="+url+"?orderId="+et_orderId.value+"&isAssist="+mIsAssist);
+					mui.ajax(url, {
+						type: 'POST',
+						dataType: 'json',
+						timeout: 10000 * 60,
+						data: {
+							orderId:et_orderId.value,
+							isAssist:mIsAssist,
+						},
+
+						success: function(response) {
+							plus.nativeUI.closeWaiting();
+							var result = JSON.stringify(response);
+							console.log("changeIsDW：" + result);
+							var data = JSON.parse(result);
+							if(data.success == true) {
+								mui.toast(data.message);
+							} else {
+								mui.alert(data.message);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.alert(xhr.status);
+							plus.nativeUI.closeWaiting();
+							console.log("error:" + xhr.response);
+							console.log("error:" + xhr.status);
+						}
+					});
+				}
+				
 
 				function pullupRefresh() {
 					plus.nativeUI.showWaiting("正在查询...")
@@ -398,7 +408,10 @@
 							et_siteNo.value = data.siteNo;
 							et_powerStopDes.value = data.powerStopDes;
 							et_implLevel.value = data.implLevel;
-							et_isAssist.value = data.isAssist;
+							
+							if(data.isAssist != null && data.isAssist.length > 0){
+								et_isAssist.innerText = data.isAssist;
+							}
 							et_remark.value = data.remark;
 
 							if(data.operName == "结束") {
