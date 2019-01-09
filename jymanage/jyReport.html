@@ -673,7 +673,7 @@
 				} else {
 					photoPath = photoPath;
 				}
-				var url = plus.storage.getItem("url") + "plugins/equipmentParam/actualtimeframedate/uploadFile.ilf";
+				var url = plus.storage.getItem("url") + "plugins/equipmentParam/actualtimeframedate/uploadFile.ilf?serialNumber=123";
 				var task = plus.uploader.createUpload(url, {
 					method: 'POST'
 				}, function(t, status, response) {
@@ -724,9 +724,9 @@
 					}
 				});
 
-				console.log("上传的文件名字:" + photoPath);
+				
 
-				task.addData("serialNumber", serialNumber);
+				task.addData("serialNumber", "");
 
 				task.addFile(photoPath, {
 					key: 'fileData'

@@ -133,11 +133,7 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
-				beforeback: function() { //监听物理返回按键的方法
-					//获得列表界面的webview
-
-
-				}
+			
 			});
 		</script>
 
@@ -753,7 +749,7 @@
 
 				function getyoukaList() {
 					console.log("getyoukaList" + cityId + "    " + countryId);
-					var table = document.body.querySelector('.orderlist');
+			
 					var url = plus.storage.getItem("url") + plus.storage.getItem("findCondition.ilf");
 					console.log("===" + url);
 					mui.ajax(url, {
@@ -761,8 +757,8 @@
 						dataType: 'json',
 						timeout: 10000 * 60,
 						data: {
-							syDs: cityId + "",
-							syQx: countryId + ""
+							syDs: "2",
+							syQx: "20"
 						},
 						success: function(response) {
 							plus.nativeUI.closeWaiting();
@@ -803,7 +799,7 @@
 
 						},
 						error: function(xhr, type, errorThrown) {
-							mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); //参数为true代表没有更多数据了。
+						
 							mui.alert(xhr.status);
 							plus.nativeUI.closeWaiting();
 							console.log("error:" + xhr.response);
