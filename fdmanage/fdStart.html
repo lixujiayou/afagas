@@ -139,11 +139,10 @@
 							")'/></li><li><b>油机类型</b><input id = 'yjlx1111'/></li><li><b>油机功率</b>" +
 							"<input id = yjgl" + infoId + " /></li><li><b>油机照片流水号</b>" +
 							"<input  id ='yjlsh" + infoId +
-							"'/></li></div><div style='text-align:center;margin-top: 10px;'><button id = " + infoId +
+							"'/><img   src='../images/fd_camera.png' onclick='fdImg(" + infoId +
+							")'/></li></div><div style='text-align:center;margin-top: 10px;'><button id = " + infoId +
 							" class='btn btn-primary'  onclick='addEngine(" + pos +
-							")'>保存油机信息</button>" +
-							"<button   style='margin-left: 10px;'   class='btn btn-primary'onclick='fdImg(" + infoId +
-							")' >查看或拍照</button></div></div></div>";
+							")'>保存油机信息</button>";
 
 						// 					li.innerHTML = '<div ><div> 油机' + pos + '_' + container.getElementsByTagName("li").length +
 						// 						'</div><div> 增加油机</div</div>';
@@ -194,11 +193,10 @@
 								")'/></li><li><b>油机类型</b><input id = 'yjlx1111'/></li><li><b>油机功率</b>" +
 								"<input id = yjgl" + infoId + " /></li><li><b>油机照片流水号</b>" +
 								"<input  id ='yjlsh" + infoId +
-								"'/></li></div><div style='text-align:center;margin-top: 10px;'><button id = " + infoId +
+								"'/><img   src='../images/fd_camera.png' onclick='fdImg(" + infoId +
+								")'/></li></div><div style='text-align:center;margin-top: 10px;'><button id = " + infoId +
 								" class='btn btn-primary'  onclick='addNewKgdy(" + infoId +
-								")'>保存油机信息</button>" +
-								"<button   style='margin-left: 10px;'   class='btn btn-primary'onclick='fdImg(" + infoId +
-								")' >查看或拍照</button></div></div></div>";
+								")'>保存油机信息</button>";
 							table.appendChild(li);
 
 						}
@@ -281,9 +279,6 @@
 								} else {
 									console.log("没有数据了");
 								}
-
-
-
 
 								if (data.infoList[i] != null) {
 									document.getElementById("kgdymc" + i).value = data.infoList[i].smpsName;
@@ -479,6 +474,7 @@
 						submitWating.close();
 					},
 					error: function(xhr, type, errorThrown) {
+						mui.alert(status);
 						console.log(xhr.response);
 						console.log(xhr.status + url);
 						submitWating.close();
@@ -647,6 +643,7 @@
 				document.getElementById(infoId).value = r;
 			}
 
+		
 			//查看或拍摄照片
 			function fdImg(infoId) {
 

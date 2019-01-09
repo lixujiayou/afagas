@@ -635,8 +635,6 @@
 							var data = JSON.stringify(t.responseText);
 							var data11 = JSON.parse(t.responseText);
 							console.log("attachmentId"+data11.attachmentId);
-							
-							
 
 							plus.io.resolveLocalFileSystemURL(photoPath, function(entry) {
 								entry.remove(function(file) {
