@@ -11,6 +11,35 @@
 		<link href="../css/font-awesome.min.css" rel="stylesheet" />
 		<link href="../css/mui.poppicker.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://cache.amap.com/lbs/static/main.css" />
+		<style>
+			.jyapply_li_lable{
+				text-align: center;
+				line-height: 30px;
+				font-size: 12px;
+				width: 45%;
+				font-weight: normal;
+				display: inline-block;
+			}
+			.jyapply_li_input{
+				font-size:14px;
+				 width: 50%; 
+				 height: 30px;
+				 margin-left:10px;
+				 -webkit-user-select: auto;  
+			}
+			.jyapply_li_a{
+		   color: black;
+			 font-size:14px; 
+			 width: 50%;
+			 height: 30px;
+			 margin-left:10px ;
+			 text-align: center;
+			 line-height: 30px; 
+			 border: #103E5C;
+			 border:1px solid  #999999 ;
+			 padding:3px 8px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -40,86 +69,63 @@
 				</div>
 
 				<div class="user-con-box mb20">
-
 					<ul class="user-info-list">
-
+						
 						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">工单ID：</span></label>
-							<div class="data">
-								<input type="text" id="et_orderId" class="user-editpage-input">
-							</div>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">告警时间：</span></label>
-								<div class="data">
-									<input type="text" id="et_powerStopTime" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">工单发起时间：</span></label>
-								<div class="data">
-									<input type="text" id="et_sendTime" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">工单号：</span></label>
-								<div class="data">
-									<input type="text" id="et_orderNo" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">工单标题描述：</span></label>
-								<div class="data">
-									<input type="text" id="et_orderTitle" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">创建人：</span></label>
-								<div class="data">
-									<input type="text" id="et_createby" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">机房地址：</span></label>
-								<div class="data">
-									<input type="text" id="et_siteLocation" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">机房名称：</span></label>
-								<div class="data">
-									<input type="text" id="et_siteName" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">机房号：</span></label>
-								<div class="data">
-									<input type="text" id="et_siteNo" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">停电事件描述：</span></label>
-								<div class="data">
-									<input type="text" id="et_powerStopDes" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">紧急程度：</span></label>
-								<div class="data">
-									<input type="text" id="et_implLevel" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">是否为代维人员：</span></label>
-								<div class="data">
-									<input type="text" id="et_isAssist" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">备注：</span></label>
-								<div class="data">
-									<input type="text" id="et_remark" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
+							<b class="jyapply_li_lable">工单ID：</b>
+							<input id="et_orderId" class="jyapply_li_input" />
+						</li>
+						
+						<li>
+							<b class="jyapply_li_lable">告警时间：</b>
+							<input id="et_powerStopTime" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">工单发起时间：</b>
+							<input id="et_sendTime" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">工单号：</b>
+							<input id="et_orderNo" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						
+						<li>
+							<b class="jyapply_li_lable">工单标题描述：</b>
+							<input id="et_orderTitle" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						
+						<li>
+							<b class="jyapply_li_lable">创建人：</b>
+							<input id="et_createby" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">机房地址：</b>
+							<input id="et_siteLocation" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">机房名称：</b>
+							<input id="et_siteName" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">机房号：</b>
+							<input id="et_siteNo" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">停电事件描述：</b>
+							<input id="et_powerStopDes" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">紧急程度：</b>
+							<input id="et_implLevel" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">是否协维人员:</b>
+							<a id="et_isAssist" class="jyapply_li_a">请选择</a>
+						</li>
+						<li>
+							<b class="jyapply_li_lable">备注：</b>
+							<input id="et_remark" class="jyapply_li_input" disabled="disabled" />
+						</li>
 
 					</ul>
 				</div>
@@ -375,7 +381,7 @@
 							var result = JSON.stringify(response);
 							console.log("上拉返回的结果：" + result);
 							var data = JSON.parse(result);
-							if(data == null){
+							if(data == null) {
 								mui.alert("此待办工单已经完成发电流程");
 								mui.back();
 								return;
@@ -394,15 +400,15 @@
 							et_implLevel.value = data.implLevel;
 							et_isAssist.value = data.isAssist;
 							et_remark.value = data.remark;
-							
+
 							if(data.operName == "结束") {
 								mui.alert("此待办工单已经完成发电流程");
 								mui.back();
 							}
-							
+
 							if(data.operName == "开始发电") {
-//								plus.storage.setItem("order_id_start", et_orderId.value + "");
-//								mui.openWindow("fdStart.html");
+								//								plus.storage.setItem("order_id_start", et_orderId.value + "");
+								//								mui.openWindow("fdStart.html");
 								btn_start_fd.style.display = "block";
 							} else {
 								btn_start_fd.style.display = "none";

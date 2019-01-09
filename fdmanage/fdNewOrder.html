@@ -9,6 +9,35 @@
 		<link href="../css/mui.css" rel="stylesheet" />
 		<link href="../css/userStyle.css" rel="stylesheet" />
 		<link href="../css/mui.picker.min.css" rel="stylesheet" />
+		<style>
+			.jyapply_li_lable{
+				text-align: center;
+				line-height: 30px;
+				font-size: 12px;
+				width: 45%;
+				font-weight: normal;
+				display: inline-block;
+			}
+			.jyapply_li_input{
+				font-size:14px;
+				 width: 50%; 
+				 height: 30px;
+				 margin-left:10px;
+				 -webkit-user-select: auto;  
+			}
+			.jyapply_li_a{
+		   color: black;
+			 font-size:14px; 
+			 width: 50%;
+			 height: 30px;
+			 margin-left:10px ;
+			 text-align: center;
+			 line-height: 30px; 
+			 border: #103E5C;
+			 border:1px solid  #999999 ;
+			 padding:3px 8px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -26,34 +55,25 @@
 					<ul class="user-info-list">
 						<div class="contitle">工单基本信息</div>
 						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">主题：</span></label>
-							<div class="data">
-								<input type="text" id="creat_title" class="user-editpage-input" value="发电工单">
-							</div>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">建单人：</span></label>
-								<div class="data">
-									<input type="text" id="creat_p" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">建单人联系方式：</span></label>
-								<div class="data">
-									<input type="text" id="creat_tel" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">建单人部门：</span></label>
-								<div class="data">
-									<input type="text" id="creat_bumen" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">建单时间：</span></label>
-								<div class="data">
-									<input type="text" id="creat_time" class="user-editpage-input" readonly="readonly">
-								</div>
-							</li>
+							<b class="jyapply_li_lable">主题:</b>
+							<input id="creat_title" class="jyapply_li_input"  value="发电工单"/>
+						</li>
+						<li>
+							<b class="jyapply_li_lable">建单人:</b>
+							<input id="creat_p" class="jyapply_li_input" disabled="disabled" />
+						</li>
+					<li>
+							<b class="jyapply_li_lable">建单人联系方式:</b>
+							<input id="creat_tel" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">建单人部门:</b>
+							<input id="creat_bumen" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">建单时间:</b>
+							<input id="creat_time" class="jyapply_li_input" disabled="disabled" />
+						</li>
 						
 					</ul>
 				</div>
@@ -63,73 +83,50 @@
 				<div class="user-con-box mb20">
 					<ul class="user-info-list">
 						<div class="contitle">工单业务信息</div>
+							
+							
 							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">机房编号：</span></label>
-								<div class="data">
-									<div id="tv_shenpiren" class=" btn btn-default" style="margin-top: 10px;">选择机房</div>
-								</div>
-							</li>
+							<b class="jyapply_li_lable">机房编号:</b>
+							<a id="tv_shenpiren" class="jyapply_li_a">选择机房</a>
+						</li>
+						<li>
+							<b class="jyapply_li_lable">机房名称:</b>
+							<input id="room_name" class="jyapply_li_input" disabled="disabled" />
+						</li>
+							
 							<li>
-							<label><i class="uicon ui-8"></i><span class="vm">机房名称：</span></label>
-							<div class="data">
-								<input type="text" id="room_name" class="user-editpage-input" readonly="readonly">
-							</div>
+							<b class="jyapply_li_lable">机房位置:</b>
+							<input id="room_adress" class="jyapply_li_input" disabled="disabled" />
+						</li>
+						<li>
+							<b class="jyapply_li_lable">代维公司接单人:</b>
+							<a id="tv_shenpiren2" class="jyapply_li_a">选择接单人</a>
 						</li>
 						
 						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">机房位置：</span></label>
-							<div class="data">
-								<input type="text" id="room_adress" class="user-editpage-input" readonly="readonly">
-							</div>
+							<b class="jyapply_li_lable">派单方式:</b>
+							<input id="workOrder" class="jyapply_li_input" disabled="disabled"  value="手动派单"/>
 						</li>
-							<li>
-								<label><i class="uicon ui-8"></i><span class="vm">代维公司接单人：</span></label>
-								<div class="data">
-									<div id="tv_shenpiren2" class=" btn btn-default" style="margin-top: 10px;">选择接单人</div>
-								</div>
-							</li>
-						
-						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">派单方式：</span></label>
-							<div class="data">
-								<input type="text" id="workOrder" class="user-editpage-input" value="手动派单" readonly="readonly"/>
-							</div>
-						</li>
-
-						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">派发环节：</span></label>
-							<div class="data">
-								<input type="text" id="workOrder" class="user-editpage-input" value="发电等待" readonly="readonly"/>
-
-							</div>
+<li>
+							<b class="jyapply_li_lable">派发环节:</b>
+							<input id="workOrder" class="jyapply_li_input" disabled="disabled"  value="发电等待"/>
 						</li>
 						
 						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">停电发生时间：</span></label>
-							<div class="data">
-								<div id="tv_select_time" class=" btn btn-default" style="margin-top: 10px;">选择时间</div>
-							</div>
+							<b class="jyapply_li_lable">停电发生时间:</b>
+							<a id="tv_select_time" class="jyapply_li_a">选择时间</a>
 						</li>
 						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">紧急程度：</span></label>
-							<div class="data ">
-								
-								<div id="bt_level" class=" btn btn-default" style="margin-top: 10px;">重要</div>
-
-							</div>
+							<b class="jyapply_li_lable">紧急程度:</b>
+							<a id="bt_level" class="jyapply_li_a">重要</a>
+						</li>
+						<li style="display: none;">
+							<b class="jyapply_li_lable">是否协维人员:</b>
+							<a id="bt_is_daiwei" class="jyapply_li_a">是</a>
 						</li>
 						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">是否协维人员：</span></label>
-							<div class="data">
-								<div id="bt_is_daiwei" class=" btn btn-default" style="margin-top: 10px;">是</div>
-
-							</div>
-						</li>
-						<li>
-							<label><i class="uicon ui-8"></i><span class="vm">备注：</span></label>
-							<div class="data">
-								<input type="text" id="et_ps" class="user-editpage-input">
-							</div>
+							<b class="jyapply_li_lable">备注:</b>
+							<input id="et_ps" class="jyapply_li_input"  />
 						</li>
 					</ul>
 				</div>
@@ -203,19 +200,19 @@
 					btn_submit = document.getElementById("btn_submit");
 					tv_select_time = document.getElementById("tv_select_time");
 
-					creat_p = document.getElementById("creat_p");
+					creat_p = document.getElementById("creat_p");  
 					creat_tel = document.getElementById("creat_tel");
 					creat_bumen = document.getElementById("creat_bumen");
 					creat_time = document.getElementById("creat_time");
 
-					tv_shenpiren2 = document.getElementById("tv_shenpiren2");
+					tv_shenpiren2 = document.getElementById("tv_shenpiren2"); 
 					tv_shenpiren = document.getElementById("tv_shenpiren");
 
 					creat_p.value = plus.storage.getItem("userRealname");
 					creat_tel.value = plus.storage.getItem("tel");
 					creat_bumen.value = plus.storage.getItem("department");
 					creat_time.value = getNowFormatDate();
-
+					
 					console.log("------jyManage页面启动啦-------");
 					input_apply_time = document.getElementById("input_apply_time");
 					fd_jdsj = document.getElementById("fd_jdsj");
