@@ -232,7 +232,8 @@
 					"jymanage/jyManage.html",
 					"fdmanage/fdManage.html",
 					"powerM.html",
-					"login.html"
+					"login.html",
+					"yjjk/yjjk.html"
 				],
 				"priority": 1
 			},
@@ -415,6 +416,21 @@
 				"refer": [
 					"jymanage/jyCityList.html",
 					"jymanage/jyYkbhtyList.html"
+				],
+				"priority": 0
+			},
+			"yjjk/yjjk.html": {
+				"resources": [],
+				"refer": [
+					"yjjk/yjjkInfoBD.html",
+					"yjjk/yjjkInfoJB.html"
+				],
+				"priority": 0
+			},
+			"yjjk/yjjkInfoBD.html": {
+				"resources": [],
+				"refer": [
+					"yjjk/barcode.html"
 				],
 				"priority": 0
 			}

@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/userStyle.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">油机列表</h1>
+		</header>
+
+		<button id="btn_ybd" class="btn btn-primary btn-block" style="width: 25%;float:left;margin-left: 10px;margin-top: 60px;">已绑定</button>
+		<button id="btn_wbd" class="btn btn-default btn-block" style="width: 25%;float:left;margin-left: 10px;margin-top: 60px;">未绑定</button>
+		<a href="#popover" id="openPopover" class="mui-btn mui-btn-primary" style="width: 15%;float: right;margin-top: 60px;margin-right: 15px;">筛选</a>
+		
+		<!-- <div class="mui-content">
+			<div class="p5 mui-scroll-wrapper" style="margin-top: 55px;">
+				<table id="dg" class="mui-table-view">
+					<thead style="font-size: 16px;">
+						<th width="50px" height="40px" align="center">序号</th>
+						<th width="150px" height="40px" align="center">设备名称</th>
+						<th width="150px" height="40px" align="center">油机编号</th>
+					</thead>
+					<tbody id="tbody" class="mui-scroll">
+
+					</tbody>
+				</table>
+			</div>
+
+		</div> -->
+		<div class="mui-content">
+			<div class="p5" style="margin-top: 55px;margin-bottom: 60px;">
+				<table id="dg" class="mui-table-view">
+					<thead style="font-size: 16px;">
+						<th width="15%" height="40px" align="center">序号</th>
+						<th width="42%" height="40px" align="center">设备名称</th>
+						<th width="43%" height="40px" align="center">油机编号</th>
+					</thead>
+					<tbody  id="tbody">
+		
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div id="popover" class="mui-popover" style="width: 80%;height: 40%;">
+			<div style="margin-top: 10%;margin-left: 5%;">
+				<span style="font-size: 16px;">设备名称：<input id="sbmc" style="width: 60%;height: 40px;"/></span>
+			</div>
+			<div style="margin-top: 10%;margin-left: 5%;">
+				<span style="font-size: 16px;">油机编号：<input id="yjbh" style="width: 60%;height: 40px;"/></span>
+			</div>
+			<div style="margin-top: 20%;margin-left: 35%;">
+				<button id="btn_search" class="btn mui-btn-green btn-block" style="width: 40%;">确定</button>
+			</div>
+		</div>
+		
+		<footer id="foot_btn" class="mui-bar mui-bar-footer" style="position: fixed; bottom: 0; left: 0;right: 0; height: 60px;">
+			<button id="btn_up" class="btn btn-default btn-block" style="width: 30%;float:left;margin-left: 10%;margin-top: 4%;">上一页</button>
+			<input id="pagenum" style="width: 15%;margin-left: 3%;margin-top: 5%;text-align: center;" onchange="inputChange();"/>
+			<button id="btn_down" class="btn btn-primary btn-block" style="width: 30%;float:right;margin-right: 10%;margin-top: 4%;">下一页</button>
+		</footer>
+
+	</body>
+
+	<script src="../js/mui.js"></script>
+	<!-- <script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script> -->
+	<script src="../js/template-web.js" type="text/javascript" charset="UTF-8"></script>
+	<script id="table" type="text/html">
+		{{each machineList as machine}}
+		<tr class="mui-table-view-cell" id="{{machine.index}}" align="center" style="height: 40px;">
+			<td>{{machine.index}}</td>
+			<td>{{machine.deviceName}}</td>
+			<td>{{machine.yjCode}}</td>
+		</tr>
+		{{/each}}
+	</script>
+	<script type="text/javascript">
+		function inputChange() {
+			var pagenum_input = document.getElementById('pagenum');
+			mui.trigger(pagenum_input, 'onchange');
+		}
+	</script>
+	<script type="text/javascript">
+		(function($, win, doc) {
+			var mstatus = 0;
+			var pageNum = 0;
+			var sbmc = '';
+			var yjbh = '';
+			var data;
+			var param = {
+				'mstatus': mstatus,
+				'pageNum': pageNum,
+				'sbmc': sbmc,
+				'yjbh': yjbh
+				};
+			var btnybd = doc.getElementById("btn_ybd");
+			var btnwbd = doc.getElementById("btn_wbd");
+			var btnup = doc.getElementById('btn_up');
+			var btndown = doc.getElementById('btn_down');
+			var pagenum_input = doc.getElementById('pagenum');
+			var btnsearch = doc.getElementById('btn_search');
+			
+			mui.init({
+				swipeBack: false, //启用右滑关闭功能
+				preloadPages: [{ // 预加载详情页面
+					id: "yjjkInfoBD",
+					url: "yjjkInfoBD.html"
+				},
+				{
+					id: "yjjkInfoJB",
+					url: "yjjkInfoJB.html"
+				}]
+			});
+			// win.onload = function() {
+				if (window.plus) {
+					plusReady();
+				} else {
+					document.addEventListener('plusready', plusReady, false);
+				}
+				
+				function plusReady() {
+// 					var tb = doc.body.querySelector("tbody");
+// 					var tr;
+					// selectOilMonitor(mstatus, pageNum);
+					selectOilMonitor(param);
+					initEventListener();
+				}
+				
+				function initEventListener() {
+					btnybd.addEventListener('tap', function() {
+						mstatus = 1;
+						pageNum = 0;
+						param['mstatus'] = mstatus;
+						param['pageNum'] = pageNum;
+						// selectOilMonitor(mstatus, pageNum);
+						selectOilMonitor(param);
+					});
+					btnwbd.addEventListener('tap', function() {
+						mstatus = 0;
+						pageNum = 0;
+						param['mstatus'] = mstatus;
+						param['pageNum'] = pageNum;
+						// selectOilMonitor(mstatus, pageNum);
+						selectOilMonitor(param);
+					});
+					btnup.addEventListener('tap', function() {
+						if (pageNum > 0) {
+							pageNum--;
+							param['pageNum'] = pageNum;
+							// selectOilMonitor(mstatus, pageNum);
+							selectOilMonitor(param);
+							console.log(pageNum);
+						} else {
+							mui.toast('已经是第一页了');
+						}
+					});
+					btndown.addEventListener('tap', function() {
+						pageNum++;
+						param['pageNum'] = pageNum;
+						// pagenum_input.value = pageNum + 1;
+						// mui.trigger(pagenum_input, 'onchange');
+						// selectOilMonitor(mstatus, pageNum);
+						selectOilMonitor(param);
+						console.log(pageNum);						
+					});
+					btnsearch.addEventListener('tap', function() {
+						console.log(document.getElementById('yjbh').value);
+						param['sbmc'] = document.getElementById('sbmc').value;
+						param['yjbh'] = document.getElementById('yjbh').value;
+						mui('.mui-popover').popover('hide');
+						selectOilMonitor(param);
+					});
+					pagenum_input.addEventListener('onchange', function() {
+						console.log('enter input change');
+						if (parseInt(pagenum_input.value) != NaN) {
+							console.log('input change');
+							pageNum = parseInt(pagenum_input.value) - 1;
+							param['pageNum'] = pageNum;
+							// selectOilMonitor(mstatus, pageNum);
+							selectOilMonitor(param);
+							console.log(pageNum);
+						} else {
+							mui.toast('请输入数字');
+						}
+					});
+					mui(".mui-table-view").on('tap', '.mui-table-view-cell', function() {
+						var detailPage = null;
+						var index = this.getAttribute("id");
+						// var selection = document.getElementById("body");
+						// console.log(selection.get);
+						// console.log(data.machineList[0].yjType);
+						if (mstatus == 0) {
+							if (!detailPage) {
+								detailPage = plus.webview.getWebviewById("yjjkInfoBD");
+							}
+							
+							mui.fire(detailPage, "info", {
+								intId: data.machineList[index - 1].intId,
+								yjType: data.machineList[index - 1].yjType,
+								deviceName: data.machineList[index - 1].deviceName,
+								yjCode: data.machineList[index - 1].yjCode,
+								deviceCode: data.machineList[index - 1].deviceCode,
+								yjModel: data.machineList[index - 1].yjModel,
+								manuFacturer: data.machineList[index - 1].manuFacturer,
+								syDs: data.machineList[index - 1].syDs,
+								syQx: data.machineList[index - 1].syQx,
+								syDept: data.machineList[index - 1].syDept,
+								syDwCompany: data.machineList[index - 1].syDwCompany,
+								yjStatus: data.machineList[index - 1].yjStatus,
+								cqsx: data.machineList[index - 1].cqsx,
+								useOilType: data.machineList[index - 1].useOilType,
+								ratedPower: data.machineList[index - 1].ratedPower,
+								normOilWear: data.machineList[index - 1].normOilWear,
+								ratedConsumption: data.machineList[index - 1].ratedConsumption,
+								storagePlace: data.machineList[index - 1].storagePlace,
+								dutyPerson: data.machineList[index - 1].dutyPerson,
+								remark: data.machineList[index - 1].remark,
+								collectorid: data.machineList[index - 1].collectorId
+							});
+							mui.openWindow({
+								id: "yjjkInfoBD"
+							});
+						} else {
+							if (!detailPage) {
+								detailPage = plus.webview.getWebviewById("yjjkInfoJB");
+							}
+							
+							mui.fire(detailPage, "info", {
+								intId: data.machineList[index - 1].intId,
+								yjType: data.machineList[index - 1].yjType,
+								deviceName: data.machineList[index - 1].deviceName,
+								yjCode: data.machineList[index - 1].yjCode,
+								deviceCode: data.machineList[index - 1].deviceCode,
+								yjModel: data.machineList[index - 1].yjModel,
+								manuFacturer: data.machineList[index - 1].manuFacturer,
+								syDs: data.machineList[index - 1].syDs,
+								syQx: data.machineList[index - 1].syQx,
+								syDept: data.machineList[index - 1].syDept,
+								syDwCompany: data.machineList[index - 1].syDwCompany,
+								yjStatus: data.machineList[index - 1].yjStatus,
+								cqsx: data.machineList[index - 1].cqsx,
+								useOilType: data.machineList[index - 1].useOilType,
+								ratedPower: data.machineList[index - 1].ratedPower,
+								normOilWear: data.machineList[index - 1].normOilWear,
+								ratedConsumption: data.machineList[index - 1].ratedConsumption,
+								storagePlace: data.machineList[index - 1].storagePlace,
+								dutyPerson: data.machineList[index - 1].dutyPerson,
+								remark: data.machineList[index - 1].remark,
+								collectorid: data.machineList[index - 1].collectorId
+							});
+							mui.openWindow({
+								id: "yjjkInfoJB"
+							});
+						}
+					});
+				}
+				
+				function selectOilMonitor(param) {
+					plus.nativeUI.showWaiting("正在初始化...");
+					var searchurl = plus.storage.getItem("url") + "plugins/toilMonitor/toilmonitor/findMui.ilf";
+					console.log("=====searchurl"+searchurl);
+					mui.ajax({
+						url: searchurl, 
+						type: 'post',
+						dataType: 'json',
+						data: param,
+						success: function(response) {
+							plus.nativeUI.closeWaiting();
+							var result = JSON.stringify(response); 
+							
+							data = JSON.parse(result);
+							// console.log(data);
+							// 						var monitorList = data.monitorList;
+							// 						for (var monitor in monitorList) {
+							// 							tr = doc.createElement("tr");
+							// 							tr.innerHTML = "<td align='center'>" + monitor + "</td>" +
+							// 								"<td align='center'>" + monitorList[monitor].manuFacturer + "</td>" +
+							// 								"<td align='center'>" + monitorList[monitor].monitorId + "</td>";
+							// 							tb.appendChild(tr);
+							// 						}
+							var html = template('table', data);
+							doc.getElementById("tbody").innerHTML = html;
+							pagenum_input.value = pageNum + 1;
+						},
+						error: function(xhr, error) {
+							plus.nativeUI.closeWaiting();
+							console.log(xhr.response);
+							console.log(xhr.status);
+						}
+					});
+				}
+			// }
+
+		}(mui, window, document));
+	</script>
+
+</html>

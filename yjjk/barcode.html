@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<!-- <div id="button">
+			<div style="height: 40%;"></div>
+		</div> -->
+	</body>
+	
+	<script src="../js/mui.js"></script>
+	<script type="text/javascript">
+		
+	</script>
+	<script type="text/javascript">
+		(function($, win, doc) {
+			if (win.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			
+			function plusReady() {
+				var barcode;
+				// var ws = plus.webview.currentWebview();
+				window.addEventListener('show', function(event) {
+					if (event.detail.time == 1) {
+						// var barcode = null;
+						// console.log('hello');
+						barcode = plus.barcode.create('barcode', [plus.barcode.QR], {
+							top: '0px',
+							left: '0px',
+							width: '100%',
+							height:'100%',
+							position: 'absolute'
+						});
+						barcode.onmarked = onmarked;
+						plus.webview.currentWebview().append(barcode);
+						
+						barcode.start();
+					} else {
+						barcode.start();
+					}
+					
+				}, false);
+				function onmarked(type, result) {
+					var current_view = plus.webview.currentWebview();
+					var parent_webview = plus.webview.currentWebview().opener();
+					mui.fire(parent_webview, 'update', {
+						collectorid: result
+					});
+// 					console.log('parent start refresh');
+					// current_view.close();
+					barcode.cancel();
+					// mui.back();
+					// current_view.clear();
+					// current_view.remove(barcode);
+					current_view.hide()
+					// barcode.cancel();
+					// barcode.close();
+				}
+			}
+		})(mui, window, document);
+	</script>
+
+</html>

@@ -36,12 +36,7 @@
 						<div class="mui-media-body">发电管理</div>
 					</a>
 				</li>
-				<li class="bg3" style="display: none;">
-					<a id="id_zxkc" href="javascript:void(0);">
-						<span class="mui-icon"><img src="images/zxks.png" height="40dp" /></span>
-						<div class="mui-media-body">待办列表</div>
-					</a>
-				</li>
+				
 				
 				<li class="bg1" style="display: none;">
 					<a id="id_zygl" href="Javascript:void(0);">
@@ -54,6 +49,12 @@
 						<span class="mui-icon"><img src="images/zygl.png" height="40dp" /></span>
 						<div class="mui-media-body">长期发电管理
 						</div>
+					</a>
+				</li>
+				<li class="bg3" >
+					<a id="id_zxkc" href="javascript:void(0);">
+						<span class="mui-icon"><img src="images/zxks.png" height="40dp" /></span>
+						<div class="mui-media-body">油机监控模块</div>
 					</a>
 				</li>
 				<li class="bg7">
@@ -166,8 +167,8 @@
 				});
 				//在线考场
 				zxkc.addEventListener('tap', function() {
-					mui.toast("待开发");
-					//				mui.openWindow({url:"onlineexam/indexExam.html",id:"onlineexam/indexExam.html", createNew:false})
+					mui.openWindow("yjjk/yjjk.html");
+					//mui.openWindow({url:"onlineexam/indexExam.html",id:"onlineexam/indexExam.html", createNew:false})
 				});
 				//切换账号
 				czsc.addEventListener('tap', function() {

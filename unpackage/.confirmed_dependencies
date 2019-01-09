@@ -5,7 +5,8 @@
 			"jymanage/jyManage.html",
 			"fdmanage/fdManage.html",
 			"powerM.html",
-			"login.html"
+			"login.html",
+			"yjjk/yjjk.html"
 		],
 		"resources": []
 	},
@@ -119,5 +120,16 @@
 			"jymanage/jyYkbhtyList.html"
 		],
 		"resources": []
+	},
+	"yjjk/yjjk.html": {
+		"refer": [
+			"yjjk/yjjkInfoBD.html",
+			"yjjk/yjjkInfoJB.html"
+		]
+	},
+	"yjjk/yjjkInfoBD.html": {
+		"refer": [
+			"yjjk/barcode.html"
+		]
 	}
 }

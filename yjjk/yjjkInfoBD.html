@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/userStyle.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">油机监控模块绑定</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class="p20" style="margin-bottom: 20px;">
+				<div class="user-con-box mb20">
+					<ul class="user-info-list">
+						<li class="mui-hidden">
+							<label for="intId" style="text-align: center;line-height: 40px;">油机类型：</label>
+							<input id="intId" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="yjtype" style="text-align: center;line-height: 40px;">油机类型：</label>
+							<input id="yjtype" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="devicename" style="text-align: center;line-height: 40px;">设备名称：</label>
+							<input id="devicename" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="yjcode" style="text-align: center;line-height: 40px;">油机编号：</label>
+							<input id="yjcode" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="devicecode" style="text-align: center;line-height: 40px;">设备编号：</label>
+							<input id="devicecode" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="yjmodel" style="text-align: center;line-height: 40px;">油机型号：</label>
+							<input id="yjmodel" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="manufacturer" style="text-align: center;line-height: 40px;">制造厂家：</label>
+							<input id="manufacturer" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="syds" style="text-align: center;line-height: 40px;">所属地市：</label>
+							<input id="syds" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="syqx" style="text-align: center;line-height: 40px;">所属区县：</label>
+							<input id="syqx" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="sydept" style="text-align: center;line-height: 40px;">所属部门：</label>
+							<input id="sydept" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="sydwcompany" style="text-align: center;line-height: 40px;">所属代维公司：</label>
+							<input id="sydwcompany" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="yjstatus" style="text-align: center;line-height: 40px;">油机状态：</label>
+							<input id="yjstatus" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="cqsx" style="text-align: center;line-height: 40px;">产权属性：</label>
+							<input id="cqsx" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="useoiltype" style="text-align: center;line-height: 40px;">用油类型：</label>
+							<input id="useoiltype" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="ratedpower" style="text-align: center;line-height: 40px;">额定功率：</label>
+							<input id="ratedpower" type="number" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="normoilwear" style="text-align: center;line-height: 40px;">标准油耗：</label>
+							<input id="normoilwear" type="number" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="ratedconsumption" style="text-align: center;line-height: 40px;">额定功耗：</label>
+							<input id="ratedconsumption" type="number" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="storageplace" style="text-align: center;line-height: 40px;">存放地点：</label>
+							<input id="storageplace" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="dutyperson" style="text-align: center;line-height: 40px;">责任人：</label>
+							<input id="dutyperson" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="remark" style="text-align: center;line-height: 40px;">备注：</label>
+							<input id="remark" style="font-size:14px; width: 60%; height: 40px;" readonly="true"/>
+						</li>
+						<li>
+							<label for="collectorid" style="text-align: center;line-height: 40px;">油机监控采集器ID：</label>
+							<input id="collectorid" style="font-size:14px; width: 60%; height: 40px; margin-top: 20px;" placeholder="未绑定油机监控模块" />
+						</li>
+						<li id="btn">
+							<button id="button" style="width: 20%; margin-left: 40%;">扫码</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<footer id="foot_btn" class="mui-bar mui-bar-footer" style="position: fixed; bottom: 0; left: 0;right: 0; height: 60px;">
+			<button id="btn_save" class="btn btn-primary btn-block" style="width: 45%;float:left;margin-left: 3%;margin-top: 4%;">绑定</button>
+			<button id="btn_cancel" class="btn btn-default btn-block" style="width: 45%;float:left;margin-left: 3%;margin-top: 4%;">取消</button>
+		</footer>
+	</body>
+	<script src="../js/mui.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			preloadPages:[{
+				id: 'barcode',
+				url: 'barcode.html'
+			}]
+		});
+	</script>
+	<script type="text/javascript">
+// 		function clickButton() {
+// 			mui.openWindow({
+// 				id: 'barcode'
+// 			});
+// 		}
+	</script>
+	<script type="text/javascript">
+		(function($, win, doc) {
+			if (win.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			
+			var collect = doc.getElementById("collectorid");
+			var barcode = null;
+			var btn = doc.getElementById('button');
+			var btn_save = doc.getElementById('btn_save');
+			var btn_cancel = doc.getElementById('btn_cancel');
+			var barcodePage = null;
+			var time = 0;
+			
+			function plusReady() {
+				document.addEventListener("info", function(event) {
+					// console.log(event.detail.yjType);
+					doc.getElementById('intId').value = event.detail.intId;
+					document.getElementById("yjtype").value = event.detail.yjType;
+					document.getElementById("devicename").value = event.detail.deviceName;
+					document.getElementById("yjcode").value = event.detail.yjCode;
+					document.getElementById("devicecode").value = event.detail.deviceCode;
+					document.getElementById("yjmodel").value = event.detail.yjModel;
+					document.getElementById("manufacturer").value = event.detail.manuFacturer;
+					document.getElementById("syds").value = event.detail.syDs;
+					document.getElementById("syqx").value = event.detail.syQx;
+					document.getElementById("sydept").value = event.detail.syDept;
+					document.getElementById("sydwcompany").value = event.detail.syDwCompany;
+					document.getElementById("yjstatus").value = event.detail.yjStatus;
+					document.getElementById("cqsx").value = event.detail.cqsx;
+					document.getElementById("useoiltype").value = event.detail.useOilType;
+					document.getElementById("ratedpower").value = event.detail.ratedPower;
+					document.getElementById("normoilwear").value = event.detail.normOilWear;
+					document.getElementById("ratedconsumption").value = event.detail.ratedConsumption;
+					document.getElementById("storageplace").value = event.detail.storagePlace;
+					document.getElementById("dutyperson").value = event.detail.dutyPerson;
+					document.getElementById("remark").value = event.detail.remark;
+					if (event.detail.collectorid != "") {
+						document.getElementById("collectorid").value = event.detail.collectorid;
+					}
+				});
+				doc.addEventListener('update', function(event) {
+					console.log('update');
+					doc.getElementById('collectorid').value = event.detail.collectorid;
+					doc.getElementById('btn').classList.add('mui-hidden');
+				});
+				btn_save.addEventListener('tap', function() {
+					var updateurl =  plus.storage.getItem("url") +"plugins/toilMonitor/toilmonitor/updateOilMachine.ilf";
+					$.ajax({
+						url: updateurl,
+						type: 'post',
+						dataType: 'json',
+						data: {
+							monitorId: doc.getElementById("collectorid").value,
+							intId: doc.getElementById('intId').value,
+							yjCode: doc.getElementById('yjcode').value
+						},
+						success: function(response) {
+							var str = JSON.stringify(response);
+							var result = JSON.parse(str);
+							if (result.success == true) {
+								doc.getElementById('collectorid').value = '';
+								doc.getElementById('btn').classList.remove('mui-hidden');
+								var parent_web = plus.webview.currentWebview().opener();
+								alert(result.message);
+								parent_web.reload();
+								mui.back();
+							} else {
+								mui.toast(result.message);
+								doc.getElementById('btn').classList.remove('mui-hidden');
+							}
+						}
+					});
+				});
+				btn_cancel.addEventListener('tap', function() {
+					doc.getElementById('btn').classList.remove('mui-hidden');
+					doc.getElementById('collectorid').value = '';
+					mui.back();
+				});
+				btn.addEventListener('tap', function() {
+					time = time + 1;
+					if (!barcodePage) {
+						barcodePage = plus.webview.getWebviewById('barcode');
+					}
+					mui.fire(barcodePage, 'show', {
+						time: time
+					});
+// 					mui.openWindow({
+// 						id: 'barcode'
+// 					});
+					barcodePage.show();
+				});
+			}
+			
+		})(mui, window, document);
+		
+	</script>
+
+</html>
