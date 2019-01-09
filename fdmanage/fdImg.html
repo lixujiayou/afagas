@@ -43,7 +43,7 @@
 				
 				
 				var currentXxWebView; //当前窗口
-				var serialNumber;
+				var serialNumber = "0";
 				var yjlsh;
 				var lsid;
 				
@@ -364,6 +364,8 @@
 
 				function plusReady() {
 					
+					
+					
 					ws = plus.webview.currentWebview();
 					wo = ws.opener();
 
@@ -373,17 +375,18 @@
 					
 					currentXxWebView = plus.webview.currentWebview();
 					console.log(currentXxWebView.data);
-					
-					if(currentXxWebView.data!=""||currentXxWebView.data!=null){
+// 					
+					if(currentXxWebView.data!=""||currentXxWebView.data!=null||currentXxWebView.data!=undefined){
 						serialNumber = currentXxWebView.data;
 						lsid = currentXxWebView.lsid;
-						console.log(lsid);
+						console.log("照片流水号"+serialNumber);
 						
 						getImgList(currentXxWebView.data);
 					}else{
-						serialNumber = "";
+						serialNumber = "0";
 					}
 					// 
+
 
 
 					
@@ -633,7 +636,6 @@
 							var data11 = JSON.parse(t.responseText);
 							console.log("attachmentId"+data11.attachmentId);
 							
-							wo.evalJS("lshshow('" + data11.attachmentId + "','" +lsid + "');");
 							
 
 							plus.io.resolveLocalFileSystemURL(photoPath, function(entry) {
@@ -669,9 +671,12 @@
 						}
 					});
 
-					console.log("serialNumber:" + serialNumber);
+				
+					
 					
 					task.addData("serialNumber", serialNumber);
+					console.log("serialNumber:" + serialNumber+url);
+
 					task.addFile(photoPath, {
 						key: 'fileData'
 					});

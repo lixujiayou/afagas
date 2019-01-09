@@ -1,135 +1,135 @@
 {
-	"main.html": {
-		"refer": [
-			"power_list.html",
-			"jymanage/jyManage.html",
-			"fdmanage/fdManage.html",
-			"powerM.html",
-			"login.html",
-			"yjjk/yjjk.html"
-		],
-		"resources": []
-	},
-	"login.html": {
-		"refer": [
-			"main.html",
-			"guide.html"
-		],
-		"resources": []
-	},
-	"jymanage/jyManage.html": {
-		"refer": [
-			"jymanage/jyReportList.html",
-			"jymanage/jyApply.html",
-			"jymanage/fdDaiBai.html",
-			"approve_list.html",
-			"approve_ok_list.html"
-		],
-		"resources": []
-	},
-	"jymanage/jyReportList.html": {
-		"refer": [
-			"jymanage/jyReportListDetail.html"
-		],
-		"resources": []
-	},
-	"fdmanage/fdManage.html": {
-		"refer": [
-			"fdmanage/fdNewOrder.html",
-			"fdmanage/fdDaiBaiList.html"
-		],
-		"resources": []
-	},
-	"fdmanage/fdNewOrder.html": {
-		"refer": [
-			"fdmanage/selectAudit.html",
-			"fdmanage/selectAuditForPeople.html"
-		],
-		"resources": []
-	},
-	"fdmanage/fdDaiBaiList.html": {
-		"refer": [
-			"fdmanage/fdDaiBaiListDetail.html"
-		],
-		"resources": []
-	},
-	"power_list.html": {
-		"refer": [
-			"power_info.html",
-			"power_add.html"
-		],
-		"resources": []
-	},
-	"powerM.html": {
-		"refer": [
-			"power_add.html",
-			"power_list.html"
-		],
-		"resources": []
-	},
-	"power_add.html": {
-		"refer": [
-			"power_file.html",
-			"fdmanage/fdManage.html",
-			"fdmanage/selectAudit.html",
-			"fdmanage/selectAuditForPeople.html",
-			"selectAuditForPeopleForPower.html"
-		],
-		"resources": []
-	},
-	"jymanage/fdDaiBai.html": {
-		"refer": [
-			"jymanage/jyReportListDetail.html"
-		],
-		"resources": []
-	},
-	"jymanage/jyReportListDetail.html": {
-		"refer": [
-			"jymanage/jyReport.html"
-		],
-		"resources": []
-	},
-	"fdmanage/fdDaiBaiListDetail.html": {
-		"refer": [
-			"fdmanage/fdStart.html"
-		],
-		"resources": []
-	},
-	"fdmanage/fdStart.html": {
-		"refer": [
-			"fdmanage/fdImg.html"
-		],
-		"resources": []
-	},
-	"approve_list.html": {
-		"refer": [
-			"approve_info.html"
-		],
-		"resources": []
-	},
-	"approve_ok_list.html": {
-		"refer": [
-			"approve_info.html",
-			"approve_ok_info.html"
-		],
-		"resources": []
-	},
-	"jymanage/jyApply.html": {
-		"refer": [
-			"jymanage/jyCityList.html",
-			"jymanage/jyYkbhtyList.html"
-		],
-		"resources": []
-	},
-	"yjjk/yjjk.html": {
-		"refer": [
-			"yjjk/yjjkInfoBD.html",
-			"yjjk/yjjkInfoJB.html"
-		]
-	},
-	"yjjk/yjjkInfoBD.html": {
-		"refer": [
-			"yjjk/barcode.html"
-		]
-	}
+  "main.html": {
+    "refer": [
+      "power_list.html",
+      "jymanage/jyManage.html",
+      "fdmanage/fdManage.html",
+      "powerM.html",
+      "login.html",
+      "yjjk/yjjk.html"
+    ],
+    "resources": []
+  },
+  "login.html": {
+    "refer": [
+      "main.html",
+      "guide.html"
+    ],
+    "resources": []
+  },
+  "jymanage/jyManage.html": {
+    "refer": [
+      "jymanage/jyReportList.html",
+      "jymanage/jyApply.html",
+      "jymanage/fdDaiBai.html",
+      "approve_list.html",
+      "approve_ok_list.html"
+    ],
+    "resources": []
+  },
+  "jymanage/jyReportList.html": {
+    "refer": [
+      "jymanage/jyReportListDetail.html"
+    ],
+    "resources": []
+  },
+  "fdmanage/fdManage.html": {
+    "refer": [
+      "fdmanage/fdNewOrder.html",
+      "fdmanage/fdDaiBaiList.html"
+    ],
+    "resources": []
+  },
+  "fdmanage/fdNewOrder.html": {
+    "refer": [
+      "fdmanage/selectAudit.html",
+      "fdmanage/selectAuditForPeople.html"
+    ],
+    "resources": []
+  },
+  "fdmanage/fdDaiBaiList.html": {
+    "refer": [
+      "fdmanage/fdDaiBaiListDetail.html"
+    ],
+    "resources": []
+  },
+  "power_list.html": {
+    "refer": [
+      "power_info.html",
+      "power_add.html"
+    ],
+    "resources": []
+  },
+  "powerM.html": {
+    "refer": [
+      "power_add.html",
+      "power_list.html"
+    ],
+    "resources": []
+  },
+  "power_add.html": {
+    "refer": [
+      "power_file.html",
+      "fdmanage/fdManage.html",
+      "fdmanage/selectAudit.html",
+      "fdmanage/selectAuditForPeople.html",
+      "selectAuditForPeopleForPower.html"
+    ],
+    "resources": []
+  },
+  "jymanage/fdDaiBai.html": {
+    "refer": [
+      "jymanage/jyReportListDetail.html"
+    ],
+    "resources": []
+  },
+  "jymanage/jyReportListDetail.html": {
+    "refer": [
+      "jymanage/jyReport.html"
+    ],
+    "resources": []
+  },
+  "fdmanage/fdDaiBaiListDetail.html": {
+    "refer": [
+      "fdmanage/fdStart.html"
+    ],
+    "resources": []
+  },
+  "fdmanage/fdStart.html": {
+    "refer": [
+      "fdmanage/fdImg.html"
+    ],
+    "resources": []
+  },
+  "approve_list.html": {
+    "refer": [
+      "approve_info.html"
+    ],
+    "resources": []
+  },
+  "approve_ok_list.html": {
+    "refer": [
+      "approve_info.html",
+      "approve_ok_info.html"
+    ],
+    "resources": []
+  },
+  "jymanage/jyApply.html": {
+    "refer": [
+      "jymanage/jyCityList.html",
+      "jymanage/jyYkbhtyList.html"
+    ],
+    "resources": []
+  },
+  "yjjk/yjjk.html": {
+    "refer": [
+      "yjjk/yjjkInfoBD.html",
+      "yjjk/yjjkInfoJB.html"
+    ]
+  },
+  "yjjk/yjjkInfoBD.html": {
+    "refer": [
+      "yjjk/barcode.html"
+    ]
+  }
 }

@@ -194,255 +194,195 @@
         }
     },
     "dependencies" : {
-		"pages": {
-			"setting.html": {
-				"href": "setting.html",
-				"resources": [
-					"js/mui.min.js",
-					"js/mui.view.js",
-					"libs/easymob-webim-sdk/jquery-1.11.1.js",
-					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-					"libs/easymob-webim-sdk/json2.js",
-					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-					"js/feedback.js",
-					"js/feedback-page.js",
-					"js/mui.locker.js",
-					"js/app.js",
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"css/feedback-page.css",
-					"images/iconfont-tianjia.png"
-				],
-				"refer": [
-					"login.html"
-				],
-				"priority": 1
-			},
-			"main.html": {
-				"href": "main.html",
-				"resources": [
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"js/mui.min.js",
-					"js/app.js"
-				],
-				"refer": [
-					"setting.html",
-					"power_list.html",
-					"jymanage/jyManage.html",
-					"fdmanage/fdManage.html",
-					"powerM.html",
-					"login.html",
-					"yjjk/yjjk.html"
-				],
-				"priority": 1
-			},
-			"unlock.html": {
-				"href": "unlock.html",
-				"resources": [
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"js/mui.min.js",
-					"js/mui.locker.js",
-					"js/app.js"
-				],
-				"refer": [
-					"login.html",
-					"main.html"
-				],
-				"priority": 0
-			},
-			"forget_password.html": {
-				"href": "forget_password.html",
-				"resources": [
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"css/style.css",
-					"js/mui.min.js",
-					"js/app.js"
-				],
-				"priority": 1
-			},
-			"reg.html": {
-				"href": "reg.html",
-				"resources": [
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"css/style.css",
-					"js/mui.min.js",
-					"js/app.js"
-				],
-				"refer": [
-					"login.html"
-				],
-				"priority": 3
-			},
-			"login.html": {
-				"href": "login.html",
-				"resources": [
-					"css/mui.min.css",
-					"fonts/mui.ttf",
-					"css/style.css",
-					"js/mui.min.js",
-					"js/mui.enterfocus.js",
-					"js/app.js",
-					"images/qihoo.png",
-					"images/qq.png",
-					"images/sinaweibo.png",
-					"images/weixin.png"
-				],
-				"refer": [
-					"unlock.html",
-					"forget_password.html",
-					"main.html",
-					"reg.html",
-					"guide.html"
-				],
-				"priority": 0
-			},
-			"jymanage/jyManage.html": {
-				"resources": [],
-				"refer": [
-					"jymanage/jyReportList.html",
-					"jymanage/jyApply.html",
-					"jymanage/fdDaiBai.html",
-					"approve_list.html",
-					"approve_ok_list.html"
-				],
-				"priority": 0
-			},
-			"jymanage/jyReportList.html": {
-				"resources": [],
-				"refer": [
-					"jymanage/jyReportListDetail.html"
-				],
-				"priority": 0
-			},
-			"fdmanage/fdManage.html": {
-				"resources": [],
-				"refer": [
-					"fdmanage/fdNewOrder.html",
-					"fdmanage/fdDaiBaiList.html"
-				],
-				"priority": 0
-			},
-			"fdmanage/fdNewOrder.html": {
-				"resources": [],
-				"refer": [
-					"fdmanage/selectAudit.html",
-					"fdmanage/selectAuditForPeople.html"
-				],
-				"priority": 0
-			},
-			"fdmanage/fdDaiBaiList.html": {
-				"resources": [],
-				"refer": [
-					"fdmanage/fdDaiBaiListDetail.html"
-				],
-				"priority": 0
-			},
-			"power_list.html": {
-				"resources": [],
-				"refer": [
-					"power_info.html",
-					"power_add.html"
-				],
-				"priority": 0
-			},
-			"powerM.html": {
-				"resources": [],
-				"refer": [
-					"power_add.html",
-					"power_list.html"
-				],
-				"priority": 0
-			},
-			"power_add.html": {
-				"resources": [],
-				"refer": [
-					"power_file.html",
-					"fdmanage/fdManage.html",
-					"fdmanage/selectAudit.html",
-					"fdmanage/selectAuditForPeople.html",
-					"selectAuditForPeopleForPower.html"
-				],
-				"priority": 0
-			},
-			"jymanage/fdDaiBai.html": {
-				"resources": [],
-				"refer": [
-					"jymanage/jyReportListDetail.html"
-				],
-				"priority": 0
-			},
-			"jymanage/jyReportListDetail.html": {
-				"resources": [],
-				"refer": [
-					"jymanage/jyReport.html"
-				],
-				"priority": 0
-			},
-			"fdmanage/fdDaiBaiListDetail.html": {
-				"resources": [],
-				"refer": [
-					"fdmanage/fdStart.html"
-				],
-				"priority": 0
-			},
-			"fdmanage/fdStart.html": {
-				"resources": [],
-				"refer": [
-					"fdmanage/fdImg.html"
-				],
-				"priority": 0
-			},
-			"approve_list.html": {
-				"resources": [],
-				"refer": [
-					"approve_info.html"
-				],
-				"priority": 0
-			},
-			"approve_ok_list.html": {
-				"resources": [],
-				"refer": [
-					"approve_info.html",
-					"approve_ok_info.html"
-				],
-				"priority": 0
-			},
-			"jymanage/jyApply.html": {
-				"resources": [],
-				"refer": [
-					"jymanage/jyCityList.html",
-					"jymanage/jyYkbhtyList.html"
-				],
-				"priority": 0
-			},
-			"yjjk/yjjk.html": {
-				"resources": [],
-				"refer": [
-					"yjjk/yjjkInfoBD.html",
-					"yjjk/yjjkInfoJB.html"
-				],
-				"priority": 0
-			},
-			"yjjk/yjjkInfoBD.html": {
-				"resources": [],
-				"refer": [
-					"yjjk/barcode.html"
-				],
-				"priority": 0
-			}
-		},
-		"idle": {
-			"resources": [
-				"js/service.js",
-				"libs/easymob-webim-sdk/quickstart.md",
-				"images/user-photo.png",
-				"README.md"
-			]
-		}
-	},
+        "pages" : {
+            "setting.html" : {
+                "href" : "setting.html",
+                "resources" : [
+                    "js/mui.min.js",
+                    "js/mui.view.js",
+                    "libs/easymob-webim-sdk/jquery-1.11.1.js",
+                    "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+                    "libs/easymob-webim-sdk/json2.js",
+                    "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+                    "js/feedback.js",
+                    "js/feedback-page.js",
+                    "js/mui.locker.js",
+                    "js/app.js",
+                    "css/mui.min.css",
+                    "fonts/mui.ttf",
+                    "css/feedback-page.css",
+                    "images/iconfont-tianjia.png"
+                ],
+                "refer" : [ "login.html" ],
+                "priority" : 1
+            },
+            "main.html" : {
+                "href" : "main.html",
+                "resources" : [ "css/mui.min.css", "fonts/mui.ttf", "js/mui.min.js", "js/app.js" ],
+                "refer" : [
+                    "setting.html",
+                    "power_list.html",
+                    "jymanage/jyManage.html",
+                    "fdmanage/fdManage.html",
+                    "powerM.html",
+                    "login.html"
+                ],
+                "priority" : 1
+            },
+            "unlock.html" : {
+                "href" : "unlock.html",
+                "resources" : [
+                    "css/mui.min.css",
+                    "fonts/mui.ttf",
+                    "js/mui.min.js",
+                    "js/mui.locker.js",
+                    "js/app.js"
+                ],
+                "refer" : [ "login.html", "main.html" ],
+                "priority" : 0
+            },
+            "forget_password.html" : {
+                "href" : "forget_password.html",
+                "resources" : [
+                    "css/mui.min.css",
+                    "fonts/mui.ttf",
+                    "css/style.css",
+                    "js/mui.min.js",
+                    "js/app.js"
+                ],
+                "priority" : 1
+            },
+            "reg.html" : {
+                "href" : "reg.html",
+                "resources" : [
+                    "css/mui.min.css",
+                    "fonts/mui.ttf",
+                    "css/style.css",
+                    "js/mui.min.js",
+                    "js/app.js"
+                ],
+                "refer" : [ "login.html" ],
+                "priority" : 3
+            },
+            "login.html" : {
+                "href" : "login.html",
+                "resources" : [
+                    "css/mui.min.css",
+                    "fonts/mui.ttf",
+                    "css/style.css",
+                    "js/mui.min.js",
+                    "js/mui.enterfocus.js",
+                    "js/app.js",
+                    "images/qihoo.png",
+                    "images/qq.png",
+                    "images/sinaweibo.png",
+                    "images/weixin.png"
+                ],
+                "refer" : [
+                    "unlock.html",
+                    "forget_password.html",
+                    "main.html",
+                    "reg.html",
+                    "guide.html"
+                ],
+                "priority" : 0
+            },
+            "jymanage/jyManage.html" : {
+                "resources" : [],
+                "refer" : [
+                    "jymanage/jyReportList.html",
+                    "jymanage/jyApply.html",
+                    "jymanage/fdDaiBai.html",
+                    "approve_list.html",
+                    "approve_ok_list.html"
+                ],
+                "priority" : 0
+            },
+            "jymanage/jyReportList.html" : {
+                "resources" : [],
+                "refer" : [ "jymanage/jyReportListDetail.html" ],
+                "priority" : 0
+            },
+            "fdmanage/fdManage.html" : {
+                "resources" : [],
+                "refer" : [ "fdmanage/fdNewOrder.html", "fdmanage/fdDaiBaiList.html" ],
+                "priority" : 0
+            },
+            "fdmanage/fdNewOrder.html" : {
+                "resources" : [],
+                "refer" : [ "fdmanage/selectAudit.html", "fdmanage/selectAuditForPeople.html" ],
+                "priority" : 0
+            },
+            "fdmanage/fdDaiBaiList.html" : {
+                "resources" : [],
+                "refer" : [ "fdmanage/fdDaiBaiListDetail.html" ],
+                "priority" : 0
+            },
+            "power_list.html" : {
+                "resources" : [],
+                "refer" : [ "power_info.html", "power_add.html" ],
+                "priority" : 0
+            },
+            "powerM.html" : {
+                "resources" : [],
+                "refer" : [ "power_add.html", "power_list.html" ],
+                "priority" : 0
+            },
+            "power_add.html" : {
+                "resources" : [],
+                "refer" : [
+                    "power_file.html",
+                    "fdmanage/fdManage.html",
+                    "fdmanage/selectAudit.html",
+                    "fdmanage/selectAuditForPeople.html",
+                    "selectAuditForPeopleForPower.html"
+                ],
+                "priority" : 0
+            },
+            "jymanage/fdDaiBai.html" : {
+                "resources" : [],
+                "refer" : [ "jymanage/jyReportListDetail.html" ],
+                "priority" : 0
+            },
+            "jymanage/jyReportListDetail.html" : {
+                "resources" : [],
+                "refer" : [ "jymanage/jyReport.html" ],
+                "priority" : 0
+            },
+            "fdmanage/fdDaiBaiListDetail.html" : {
+                "resources" : [],
+                "refer" : [ "fdmanage/fdStart.html" ],
+                "priority" : 0
+            },
+            "fdmanage/fdStart.html" : {
+                "resources" : [],
+                "refer" : [ "fdmanage/fdImg.html" ],
+                "priority" : 0
+            },
+            "approve_list.html" : {
+                "resources" : [],
+                "refer" : [ "approve_info.html" ],
+                "priority" : 0
+            },
+            "approve_ok_list.html" : {
+                "resources" : [],
+                "refer" : [ "approve_info.html", "approve_ok_info.html" ],
+                "priority" : 0
+            },
+            "jymanage/jyApply.html" : {
+                "resources" : [],
+                "refer" : [ "jymanage/jyCityList.html", "jymanage/jyYkbhtyList.html" ],
+                "priority" : 0
+            }
+        },
+        "idle" : {
+            "resources" : [
+                "js/service.js",
+                "libs/easymob-webim-sdk/quickstart.md",
+                "images/user-photo.png",
+                "README.md"
+            ]
+        }
+    },
     "unpackage" : [ "README.md" ]
 }
