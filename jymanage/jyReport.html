@@ -146,7 +146,7 @@
 			var currentlati;
 			var currentlongti;
 			var btn_submit = doc.getElementById("btn_submit");;
-			var serialNumber = "";
+			var serialNumber = "0";
 
 			var jy_jkbh;
 			var jy_lx;
@@ -673,7 +673,7 @@
 				} else {
 					photoPath = photoPath;
 				}
-				var url = plus.storage.getItem("url") + "plugins/equipmentParam/actualtimeframedate/uploadFile.ilf?serialNumber=123";
+				var url = plus.storage.getItem("url") + plus.storage.getItem("uploadFile.ilf");
 				var task = plus.uploader.createUpload(url, {
 					method: 'POST'
 				}, function(t, status, response) {
@@ -726,7 +726,7 @@
 
 				
 
-				task.addData("serialNumber", "");
+				task.addData("serialNumber", serialNumber);
 
 				task.addFile(photoPath, {
 					key: 'fileData'
