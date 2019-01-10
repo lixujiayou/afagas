@@ -644,6 +644,9 @@
 										allPhotoList.length = 0;
 										var bts = ["是"];
 										plus.nativeUI.confirm("上传成功", function(e) {
+											
+											wo.evalJS("lshshow('" + data11.attachmentId + "','" + lsid + "');");
+											
 											mui.back();
 
 										}, "确定", bts);
