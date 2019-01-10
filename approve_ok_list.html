@@ -48,7 +48,8 @@
 				done_ok.addEventListener('tap', function() {
 					var checkedValues = selectAny();
 					if(checkedValues.length > 0) {
-						//mui.alert('你通过了: ' + checkedValues);
+//						mui.alert('你通过了: ' + checkedValues);
+						
 						shenPi("通过",checkedValues);
 						
 					} else {
@@ -169,13 +170,17 @@
 							}
 							for(var i = 0; i < resultList.length; i++) {
 								var li = document.createElement('li');
-
-								var mTitle = resultList[i].addoilfuelcardNo; //油卡编号 
+								var mTime; //申请人
+								if(resultList[i].checkMan == null || resultList[i].checkMan.length < 1){
+									 mTime = "";
+								}else{
+									 mTime = resultList[i].checkMan;
+								}
+								var mTitle = resultList[i].addoilfuelMoney; //加油金额 
 								var mMany = resultList[i].addoilfuelVolume; //预估加油量
-								var mTime = resultList[i].intId; //申请时间
+								
 								var mAdress = resultList[i].addoilfuelTime; //所属代维公司
-
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>申请时间：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div  class='user-con-box mb20'><div class='contitle'> <input id="+i+"  class='uicon' type='checkbox'/>申请人:"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>申请时间：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>加油金额 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li); 
 							}
 							count += 1;
@@ -223,12 +228,17 @@
 							}
 							for(var i = 0; i < resultList.length; i++) {
 								var li = document.createElement('li');
-								var mTitle = resultList[i].addoilfuelcardNo; //油卡编号 
+								var mTime; //申请人
+								if(resultList[i].checkMan == null || resultList[i].checkMan.length < 1){
+									 mTime = "";
+								}else{
+									 mTime = resultList[i].checkMan;
+								}
+								var mTitle = resultList[i].addoilfuelMoney; //加油金额 
 								var mMany = resultList[i].addoilfuelVolume; //预估加油量
-								var mTime = resultList[i].intId; //申请时间
+								
 								var mAdress = resultList[i].addoilfuelTime; //所属代维公司
-
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>申请时间：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div  class='user-con-box mb20'><div class='contitle'> <input id="+i+"  class='uicon' type='checkbox'/>申请人:"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>申请时间：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>加油金额 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li);
 							}
 							count = 1;
@@ -261,7 +271,7 @@
 				var checkedValues = [];
 				checkboxArray.forEach(function(box) {
 					if(box.checked) {
-						checkedValues.push(box.parentNode.innerText);
+						checkedValues.push(workList[box.id].intId);
 					}
 				});
 				return checkedValues;

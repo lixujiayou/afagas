@@ -141,6 +141,8 @@
 						plus.storage.setItem("findByFlowId_jiayou_sq", "plugins/taddOilApplyGd/taddoilapplygd/findByFlowId.ilf");
 						//发电-是否谢伟人员
 						plus.storage.setItem("changeAssist", "plugins/ordergeneration/elegenerationorderinfo/changeAssist.ilf");
+						//代维人员权限
+						plus.storage.setItem("getJurisdiction", "plugins/mobileLogin/getJurisdiction.do");
 						
 						
 						
@@ -332,27 +334,8 @@
 								plus.storage.setItem("country", data.userInfo.county);
 								plus.storage.setItem("tel", data.userInfo.tel);
 								
-//								var parm = "{currentUserId:'" + data.userid + "'}";
-//								var usercityUrl = plus.storage.getItem("url") + "/NMMP/resourceCollectController/findCurrentUserInfo";
-//								mui.ajax({
-//									url: usercityUrl,
-//									type: 'post',
-//									dataType: 'json',
-//									data: {
-//										submitData: parm
-//									},
-//									success: function(response) {
-//										plus.storage.setItem("usercityId", response.cityId);
-//										plus.storage.setItem("usercityName", response.cityName);
-//									},
-//									error: function(xhr, type, errorThrown) {
-//										//mui.alert("您的网络不通畅","系统提示");
-//										 submitWating.close();
-//									}
-//								});
 								 submitWating.close();
-								mui.openWindow({url:"main.html",id:"main.html", createNew:false})
-								setTimeout(function(){plus.webview.currentWebview().close();},1000);
+								initUser();
 							} else {
 								mui.alert("用户名或者密码错误", "系统提示");
 								 submitWating.close();
@@ -369,6 +352,42 @@
 					});
 					
 				}
+				
+				
+				function initUser() {
+					var url = plus.storage.getItem("url") + plus.storage.getItem("getJurisdiction") ;
+					var submitWating = plus.nativeUI.showWaiting("初始化...");
+					mui.ajax({
+						url: url,
+						type: 'post',
+						dataType: 'json',
+						timeout: 10000, //5秒超时
+						success: function(response) {
+							submitWating.close();
+							var result = JSON.stringify(response);
+							var data = JSON.parse(result);
+							console.log("初始化===="+result);
+							if(true == data.success) {
+								var resultMy = data.result;
+								plus.storage.setItem("isJy", resultMy.isJy);
+								plus.storage.setItem("isFd", resultMy.isFd);
+								mui.openWindow({url:"main.html",id:"main.html", createNew:false})
+								setTimeout(function(){plus.webview.currentWebview().close();},1000);
+							} else {
+								mui.alert("获取用户权限失败,请联系管理员");
+							} 
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(xhr.response);
+							 submitWating.close();
+							 mui.alert("获取用户权限失败,请联系管理员"+xhr.response);
+						}
+					});
+					
+				}
+				
+				
+				
 				//去除用户名前后空格
 				String.prototype.trim = function() {
 					return this.replace(/(^\s*)|(\s*$)/g, "");

@@ -91,8 +91,6 @@
 				}
 			});
 			
-			
-			
 			function shenPi(statusU,idss) {
 				var url = plus.storage.getItem("url") + plus.storage.getItem("approvalAll_jiayou");
 				console.log( url+"?checkStatus="+statusU+"&idss="+idss+"&username="+plus.storage.getItem("username")+"&name="+plus.storage.getItem("userRealname"));
@@ -104,7 +102,7 @@
 						ownerName: plus.storage.getItem("username"),
 						checkStatus: statusU+"",
 						intIds: idss+"",
-						  userName:plus.storage.getItem("userRealname")
+						userName:plus.storage.getItem("userRealname")
 					},
 					success: function(response) {
 						plus.nativeUI.closeWaiting();
@@ -125,8 +123,6 @@
 					}
 				});
 			}
-			
-			
 
 			function onItemClick(pos) {
 				console.log("===="+workList[pos].flowId);
@@ -177,7 +173,7 @@
 								var mTime = resultList[i].intId; //油卡编号
 								var mAdress = resultList[i].belongDaiweiCompany; //所属代维公司
 
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input id="+i+" class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li);
 							}
 							count += 1;
@@ -230,7 +226,7 @@
 								var mTime = resultList[i].intId; //油卡编号
 								var mAdress = resultList[i].belongDaiweiCompany; //所属代维公司
 
-								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input class='uicon' type='checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
+								li.innerHTML = "<div class='user-con-box mb20'><div class='contitle'> <input id=" + i+" class='uicon' type = 'checkbox'/>"+mTime+"</div><ul onclick=onItemClick(" + i + ") class='user-info-list'><li><label><i class='uicon ui-8'></i><span class='vm'>预估加油量：</span></label><div class='data'>" + mMany + "</div></li><li><label><i class='uicon ui-4'></i><span class='vm'>所属代维公司：</span></label><div class='data'>" + mAdress + "</div></li><li><label><i class='uicon ui-3'></i><span class='vm'>油卡编号 ：</span></label><div class='data'>" + mTitle + "</div></li></ul></div>";
 								table.appendChild(li);
 							}
 							count = 1;
@@ -263,7 +259,7 @@
 				var checkedValues = [];
 				checkboxArray.forEach(function(box) {
 					if(box.checked) {
-						checkedValues.push(box.parentNode.innerText);
+						checkedValues.push(workList[box.id].intId);
 					}
 				});
 				return checkedValues;
