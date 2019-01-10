@@ -62,7 +62,7 @@
 					<ul class="user-info-list">
 						<li>
 							<b class="jyapply_li_lable"><b style="color:red;position: relative;top: 3px;">*</b>油卡编号:</b>
-							<input id="jy_ykbh" class="jyapply_li_input" />
+							<input id="jy_ykbh" class="jyapply_li_input"oninput="value=value.replace(/[^\d]/g,'')" />
 						</li>
 						</li>
 						<li>
@@ -76,15 +76,15 @@
 						</li>
 						<li>
 							<b class="jyapply_li_lable">加油量（升）:</b>
-							<input id="jy_jyl" class="jyapply_li_input" />
+							<input id="jy_jyl" class="jyapply_li_input" oninput="value=value.replace(/[^\d]/g,'')"/>
 						</li>
 						<li>
 							<b class="jyapply_li_lable">单价（元）:</b>
-							<input id="jy_dj" class="jyapply_li_input" />
+							<input id="jy_dj" class="jyapply_li_input" oninput="value=value.replace(/[^\d]/g,'')"/>
 						</li>
 						<li>
 							<b class="jyapply_li_lable">加油金额（元）:</b>
-							<input id="jy_jyje" class="jyapply_li_input" />
+							<input id="jy_jyje" class="jyapply_li_input"oninput="value=value.replace(/[^\d]/g,'')" />
 						</li>
 						<li>
 							<b class="jyapply_li_lable">加油时间:</b>
