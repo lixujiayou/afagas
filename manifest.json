@@ -101,14 +101,14 @@
 
                         /*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
                         "settings-normal" : "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
-                        "app@2x" : "images/icon.png",
-                        "app@3x" : "images/icon.png",
-                        "settings@3x" : "images/icon.png",
-                        "settings@2x" : "images/icon.png",
-                        "spotlight@2x" : "images/icon.png",
-                        "spotlight@3x" : "images/icon.png",
-                        "notification@3x" : "images/icon.png",
-                        "notification@2x" : "images/icon.png"
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png"
                     },
                     "ipad" : {
                         "normal" : "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
@@ -119,25 +119,25 @@
                         "spotlight-retina" : "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
 
                         /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*//*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*//*iPad设置页面程序图标，分辨率：29x29*/
-                        "app" : "images/icon.png",
-                        "app@2x" : "images/icon.png",
-                        "settings" : "images/icon.png",
-                        "proapp@2x" : "images/icon.png",
-                        "spotlight" : "images/icon.png",
-                        "settings@2x" : "images/icon.png",
-                        "spotlight@2x" : "images/icon.png",
-                        "notification" : "images/icon.png",
-                        "notification@2x" : "images/icon.png"
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png"
                     },
                     "appstore" : "unpackage/res/icons/1024x1024.png"
                 },
                 "android" : {
-                    "mdpi" : "images/icon.png", /*普通屏程序图标，分辨率：48x48*/
-                    "ldpi" : "images/icon.png", /*大屏程序图标，分辨率：48x48*/
-                    "hdpi" : "images/icon.png", /*高分屏程序图标，分辨率：72x72*/
-                    "xhdpi" : "images/icon.png", /*720P高分屏程序图标，分辨率：96x96*/
-                    "xxhdpi" : "images/icon.png",
-                    "xxxhdpi" : "images/icon.png"
+                    "mdpi" : "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi" : "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi" : "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi" : "unpackage/res/icons/96x96.png", /*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
                 }
             },
             "splashscreen" : {
@@ -194,195 +194,255 @@
         }
     },
     "dependencies" : {
-        "pages" : {
-            "setting.html" : {
-                "href" : "setting.html",
-                "resources" : [
-                    "js/mui.min.js",
-                    "js/mui.view.js",
-                    "libs/easymob-webim-sdk/jquery-1.11.1.js",
-                    "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
-                    "libs/easymob-webim-sdk/json2.js",
-                    "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
-                    "js/feedback.js",
-                    "js/feedback-page.js",
-                    "js/mui.locker.js",
-                    "js/app.js",
-                    "css/mui.min.css",
-                    "fonts/mui.ttf",
-                    "css/feedback-page.css",
-                    "images/iconfont-tianjia.png"
-                ],
-                "refer" : [ "login.html" ],
-                "priority" : 1
-            },
-            "main.html" : {
-                "href" : "main.html",
-                "resources" : [ "css/mui.min.css", "fonts/mui.ttf", "js/mui.min.js", "js/app.js" ],
-                "refer" : [
-                    "setting.html",
-                    "power_list.html",
-                    "jymanage/jyManage.html",
-                    "fdmanage/fdManage.html",
-                    "powerM.html",
-                    "login.html"
-                ],
-                "priority" : 1
-            },
-            "unlock.html" : {
-                "href" : "unlock.html",
-                "resources" : [
-                    "css/mui.min.css",
-                    "fonts/mui.ttf",
-                    "js/mui.min.js",
-                    "js/mui.locker.js",
-                    "js/app.js"
-                ],
-                "refer" : [ "login.html", "main.html" ],
-                "priority" : 0
-            },
-            "forget_password.html" : {
-                "href" : "forget_password.html",
-                "resources" : [
-                    "css/mui.min.css",
-                    "fonts/mui.ttf",
-                    "css/style.css",
-                    "js/mui.min.js",
-                    "js/app.js"
-                ],
-                "priority" : 1
-            },
-            "reg.html" : {
-                "href" : "reg.html",
-                "resources" : [
-                    "css/mui.min.css",
-                    "fonts/mui.ttf",
-                    "css/style.css",
-                    "js/mui.min.js",
-                    "js/app.js"
-                ],
-                "refer" : [ "login.html" ],
-                "priority" : 3
-            },
-            "login.html" : {
-                "href" : "login.html",
-                "resources" : [
-                    "css/mui.min.css",
-                    "fonts/mui.ttf",
-                    "css/style.css",
-                    "js/mui.min.js",
-                    "js/mui.enterfocus.js",
-                    "js/app.js",
-                    "images/qihoo.png",
-                    "images/qq.png",
-                    "images/sinaweibo.png",
-                    "images/weixin.png"
-                ],
-                "refer" : [
-                    "unlock.html",
-                    "forget_password.html",
-                    "main.html",
-                    "reg.html",
-                    "guide.html"
-                ],
-                "priority" : 0
-            },
-            "jymanage/jyManage.html" : {
-                "resources" : [],
-                "refer" : [
-                    "jymanage/jyReportList.html",
-                    "jymanage/jyApply.html",
-                    "jymanage/fdDaiBai.html",
-                    "approve_list.html",
-                    "approve_ok_list.html"
-                ],
-                "priority" : 0
-            },
-            "jymanage/jyReportList.html" : {
-                "resources" : [],
-                "refer" : [ "jymanage/jyReportListDetail.html" ],
-                "priority" : 0
-            },
-            "fdmanage/fdManage.html" : {
-                "resources" : [],
-                "refer" : [ "fdmanage/fdNewOrder.html", "fdmanage/fdDaiBaiList.html" ],
-                "priority" : 0
-            },
-            "fdmanage/fdNewOrder.html" : {
-                "resources" : [],
-                "refer" : [ "fdmanage/selectAudit.html", "fdmanage/selectAuditForPeople.html" ],
-                "priority" : 0
-            },
-            "fdmanage/fdDaiBaiList.html" : {
-                "resources" : [],
-                "refer" : [ "fdmanage/fdDaiBaiListDetail.html" ],
-                "priority" : 0
-            },
-            "power_list.html" : {
-                "resources" : [],
-                "refer" : [ "power_info.html", "power_add.html" ],
-                "priority" : 0
-            },
-            "powerM.html" : {
-                "resources" : [],
-                "refer" : [ "power_add.html", "power_list.html" ],
-                "priority" : 0
-            },
-            "power_add.html" : {
-                "resources" : [],
-                "refer" : [
-                    "power_file.html",
-                    "fdmanage/fdManage.html",
-                    "fdmanage/selectAudit.html",
-                    "fdmanage/selectAuditForPeople.html",
-                    "selectAuditForPeopleForPower.html"
-                ],
-                "priority" : 0
-            },
-            "jymanage/fdDaiBai.html" : {
-                "resources" : [],
-                "refer" : [ "jymanage/jyReportListDetail.html" ],
-                "priority" : 0
-            },
-            "jymanage/jyReportListDetail.html" : {
-                "resources" : [],
-                "refer" : [ "jymanage/jyReport.html" ],
-                "priority" : 0
-            },
-            "fdmanage/fdDaiBaiListDetail.html" : {
-                "resources" : [],
-                "refer" : [ "fdmanage/fdStart.html" ],
-                "priority" : 0
-            },
-            "fdmanage/fdStart.html" : {
-                "resources" : [],
-                "refer" : [ "fdmanage/fdImg.html" ],
-                "priority" : 0
-            },
-            "approve_list.html" : {
-                "resources" : [],
-                "refer" : [ "approve_info.html" ],
-                "priority" : 0
-            },
-            "approve_ok_list.html" : {
-                "resources" : [],
-                "refer" : [ "approve_info.html", "approve_ok_info.html" ],
-                "priority" : 0
-            },
-            "jymanage/jyApply.html" : {
-                "resources" : [],
-                "refer" : [ "jymanage/jyCityList.html", "jymanage/jyYkbhtyList.html" ],
-                "priority" : 0
-            }
-        },
-        "idle" : {
-            "resources" : [
-                "js/service.js",
-                "libs/easymob-webim-sdk/quickstart.md",
-                "images/user-photo.png",
-                "README.md"
-            ]
-        }
-    },
+		"pages": {
+			"setting.html": {
+				"href": "setting.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/mui.view.js",
+					"libs/easymob-webim-sdk/jquery-1.11.1.js",
+					"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+					"libs/easymob-webim-sdk/json2.js",
+					"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+					"js/feedback.js",
+					"js/feedback-page.js",
+					"js/mui.locker.js",
+					"js/app.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/feedback-page.css",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 1
+			},
+			"main.html": {
+				"href": "main.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/app.js"
+				],
+				"refer": [
+					"setting.html",
+					"power_list.html",
+					"jymanage/jyManage.html",
+					"fdmanage/fdManage.html",
+					"powerM.html",
+					"login.html",
+					"yjjk/yjjk.html"
+				],
+				"priority": 1
+			},
+			"unlock.html": {
+				"href": "unlock.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/mui.locker.js",
+					"js/app.js"
+				],
+				"refer": [
+					"login.html",
+					"main.html"
+				],
+				"priority": 0
+			},
+			"forget_password.html": {
+				"href": "forget_password.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/app.js"
+				],
+				"priority": 1
+			},
+			"reg.html": {
+				"href": "reg.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/app.js"
+				],
+				"refer": [
+					"login.html"
+				],
+				"priority": 3
+			},
+			"login.html": {
+				"href": "login.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/style.css",
+					"js/mui.min.js",
+					"js/mui.enterfocus.js",
+					"js/app.js",
+					"images/qihoo.png",
+					"images/qq.png",
+					"images/sinaweibo.png",
+					"images/weixin.png"
+				],
+				"refer": [
+					"unlock.html",
+					"forget_password.html",
+					"main.html",
+					"reg.html",
+					"guide.html"
+				],
+				"priority": 0
+			},
+			"jymanage/jyManage.html": {
+				"resources": [],
+				"refer": [
+					"jymanage/jyReportList.html",
+					"jymanage/jyApply.html",
+					"jymanage/fdDaiBai.html",
+					"approve_list.html",
+					"approve_ok_list.html"
+				],
+				"priority": 0
+			},
+			"jymanage/jyReportList.html": {
+				"resources": [],
+				"refer": [
+					"jymanage/jyReportListDetail.html"
+				],
+				"priority": 0
+			},
+			"fdmanage/fdManage.html": {
+				"resources": [],
+				"refer": [
+					"fdmanage/fdNewOrder.html",
+					"fdmanage/fdDaiBaiList.html"
+				],
+				"priority": 0
+			},
+			"fdmanage/fdNewOrder.html": {
+				"resources": [],
+				"refer": [
+					"fdmanage/selectAudit.html",
+					"fdmanage/selectAuditForPeople.html"
+				],
+				"priority": 0
+			},
+			"fdmanage/fdDaiBaiList.html": {
+				"resources": [],
+				"refer": [
+					"fdmanage/fdDaiBaiListDetail.html"
+				],
+				"priority": 0
+			},
+			"power_list.html": {
+				"resources": [],
+				"refer": [
+					"power_info.html",
+					"power_add.html"
+				],
+				"priority": 0
+			},
+			"powerM.html": {
+				"resources": [],
+				"refer": [
+					"power_add.html",
+					"power_list.html"
+				],
+				"priority": 0
+			},
+			"power_add.html": {
+				"resources": [],
+				"refer": [
+					"power_file.html",
+					"fdmanage/fdManage.html",
+					"fdmanage/selectAudit.html",
+					"fdmanage/selectAuditForPeople.html",
+					"selectAuditForPeopleForPower.html"
+				],
+				"priority": 0
+			},
+			"jymanage/fdDaiBai.html": {
+				"resources": [],
+				"refer": [
+					"jymanage/jyReportListDetail.html"
+				],
+				"priority": 0
+			},
+			"jymanage/jyReportListDetail.html": {
+				"resources": [],
+				"refer": [
+					"jymanage/jyReport.html"
+				],
+				"priority": 0
+			},
+			"fdmanage/fdDaiBaiListDetail.html": {
+				"resources": [],
+				"refer": [
+					"fdmanage/fdStart.html"
+				],
+				"priority": 0
+			},
+			"fdmanage/fdStart.html": {
+				"resources": [],
+				"refer": [
+					"fdmanage/fdImg.html"
+				],
+				"priority": 0
+			},
+			"approve_list.html": {
+				"resources": [],
+				"refer": [
+					"approve_info.html"
+				],
+				"priority": 0
+			},
+			"approve_ok_list.html": {
+				"resources": [],
+				"refer": [
+					"approve_info.html",
+					"approve_ok_info.html"
+				],
+				"priority": 0
+			},
+			"jymanage/jyApply.html": {
+				"resources": [],
+				"refer": [
+					"jymanage/jyCityList.html",
+					"jymanage/jyYkbhtyList.html"
+				],
+				"priority": 0
+			},
+			"yjjk/yjjk.html": {
+				"resources": [],
+				"refer": [
+					"yjjk/yjjkInfoBD.html",
+					"yjjk/yjjkInfoJB.html"
+				],
+				"priority": 0
+			},
+			"yjjk/yjjkInfoBD.html": {
+				"resources": [],
+				"refer": [
+					"yjjk/barcode.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/service.js",
+				"libs/easymob-webim-sdk/quickstart.md",
+				"images/user-photo.png",
+				"README.md"
+			]
+		}
+	},
     "unpackage" : [ "README.md" ]
 }
