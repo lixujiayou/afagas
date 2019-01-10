@@ -16,29 +16,24 @@
 			<h1 class="mui-title">加油管理</h1>
 		</header>
 
-		<div class="mui-content">
-
-			<ul class="MainMenuList mt20">
-
-				<li id="li_jy_sq" class="bg2">
-					<a id="id_jysq" href="javascript:void(0);">
+		<div id="div_1" class="mui-content" style="display: block;">
+			<ul class="MainMenuList mt20"> 
+				<li id="li_jy_sq" class="bg2" >
+					<a id="id_jysq" href="javascript:void(0);" >
 						<span class="mui-icon"><img src="../images/icon_main_1.png" height="40dp" /></span>
 						<div class="mui-media-body">加油申请</div>
 					</a>
 				</li>
 
-				<li  class="bg6">
+				<li  class="bg6" >
 					<a id="id_sqsp" href="javascript:void(0);">
 						<span class="mui-icon"><img src="../images/icon_main_3.png" height="40dp" /></span>
 						<div class="mui-media-body">申请审批</div>
 					</a>
 				</li>
-
-
-
 			</ul>
 
-			<ul class="MainMenuList ">
+			<ul class="MainMenuList mt20">
 
 				<li id="li_jy_sb" class="bg3">
 					<a id="id_jysb" href="javascript:void(0);">
@@ -46,16 +41,40 @@
 						<div class="mui-media-body">加油上报</div>
 					</a>
 				</li>
-
-
 				<li class="bg1">
 					<a id="id_qrsp" href="javascript:void(0);">
 						<span class="mui-icon"><img src="../images/icon_main_10.png" height="40dp" /></span>
 						<div class="mui-media-body">确认审批</div>
 					</a>
 				</li>
+				
 			</ul>
 		</div>
+		
+		
+		
+		<div id="div_2" class="mui-content" style="display: none;">
+			<ul class="MainMenuList mt20"> 
+				<li  class="bg6" >
+					<a id="id_sqsp" href="javascript:void(0);">
+						<span class="mui-icon"><img src="../images/icon_main_3.png" height="40dp" /></span>
+						<div class="mui-media-body">申请审批</div>
+					</a>
+				</li>
+				
+					<li class="bg1">
+					<a id="id_qrsp" href="javascript:void(0);">
+						<span class="mui-icon"><img src="../images/icon_main_10.png" height="40dp" /></span>
+						<div class="mui-media-body">确认审批</div>
+					</a>
+				</li>
+			</ul>
+
+		
+		</div>
+		
+		
+		
 
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript" src="../js/mui.js"></script>
@@ -74,6 +93,8 @@
 			
 			var li_jy_sq;
 			var li_jy_sb;
+			var div_1;
+			var div_2;
 
 			(function($, doc) {
 
@@ -84,22 +105,26 @@
 				}
 
 				function plusReady() {
+					div_1 = document.getElementById("div_1");
+					div_2 = document.getElementById("div_2");
+					
+					
 					id_jysq = doc.getElementById("id_jysq");
 					id_jysb = doc.getElementById("id_jysb");
 					id_sqsp = document.getElementById("id_sqsp");
 					id_qrsp = document.getElementById("id_qrsp");
-					 li_jy_sq = document.getElementById("li_jy_sq");
+					 li_jy_sq = document.getElementById("li_jy_sq"); 
 				 	li_jy_sb = document.getElementById("li_jy_sb"); 
 					
 						var fdType = plus.storage.getItem("isJy");
-						if(fdType == true){
-							li_jy_sq.style.display = "block";
-							li_jy_sb.style.display = "block";
+						console.log("==="+fdType);
+						if(fdType == 'true'){
+							div_1.style.display = "block";
+							div_2.style.display = "none";
 						}else{
-							li_jy_sq.style.display = "none";
-							li_jy_sb.style.display = "none";
+							div_1.style.display = "none";
+							div_2.style.display = "block";
 						}
-					
 					
 					console.log("------jyManage页面启动啦-------");
 					if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {

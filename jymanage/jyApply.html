@@ -96,7 +96,7 @@
 						</li>
 
 						<li>
-							<b class="jyapply_li_lable">所属代维公司:</b>
+							<b class="jyapply_li_lable">所属部门:</b>
 							<input id="jy_department" class="jyapply_li_input" disabled="disabled" />
 						</li>
 						<li>
@@ -202,16 +202,16 @@
 					mui_back.addEventListener('click', function() {
 						mui.currentWebview.close();
 					});
+					
+					
+					
 
 					getNowFormatDate();
 
 					getCity();
-
-					if (plus.storage.getItem("department") != "" && plus.storage.getItem("department") != null) {
-
-						jy_department.value = plus.storage.getItem("department");
-					}
-
+					
+					
+					
 
 					$.init();
 					$.ready(function() {
@@ -241,23 +241,13 @@
 
 						jy_apply_lx.addEventListener('tap', function(event) {
 							userPicker.show(function(items) {
-
 								var type = JSON.stringify(items[0].text).replace(/\"/g, "");
-
-
 								jy_apply_lx.innerHTML = type;
-
 							});
 						}, false);
-
-
 					});
 
-
-
 					getCheckPerson();
-
-
 
 					//前往区县页面
 
@@ -408,7 +398,19 @@
 
 					jy_apply_title.value = plus.storage.getItem("city") + plus.storage.getItem("country") + time1;
 
-					// jy_apply_title.placeholder = "加油申请-"++"submitDate";
+
+
+
+
+					cityId = plus.storage.getItem("m_city_id");
+					jy_city.innerText = plus.storage.getItem("city");
+					countryId = plus.storage.getItem("m_county_id");
+					jy_country.innerText = plus.storage.getItem("country");
+					jy_apply_title.value = plus.storage.getItem("city") + plus.storage.getItem(
+											"country") + time1;		
+					if (plus.storage.getItem("department") != "" && plus.storage.getItem("department") != null) {
+						jy_department.value = plus.storage.getItem("department");
+					}
 
 				};
 

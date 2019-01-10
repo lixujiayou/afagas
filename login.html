@@ -334,6 +334,9 @@
 								plus.storage.setItem("country", data.userInfo.county);
 								plus.storage.setItem("tel", data.userInfo.tel);
 								
+								plus.storage.setItem("m_city_id", data.userInfo.cityId+"");
+								plus.storage.setItem("m_county_id", data.userInfo.countyId+"");
+								
 								 submitWating.close();
 								initUser();
 							} else {
@@ -368,9 +371,9 @@
 							var data = JSON.parse(result);
 							console.log("初始化===="+result);
 							if(true == data.success) {
-								var resultMy = data.result;
-								plus.storage.setItem("isJy", resultMy.isJy);
-								plus.storage.setItem("isFd", resultMy.isFd);
+								var resultMy = data.result[0];
+								plus.storage.setItem("isJy", resultMy.isJy+"");
+								plus.storage.setItem("isFd", resultMy.isFd+"");
 								mui.openWindow({url:"main.html",id:"main.html", createNew:false})
 								setTimeout(function(){plus.webview.currentWebview().close();},1000);
 							} else {
