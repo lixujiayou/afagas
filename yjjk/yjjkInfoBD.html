@@ -137,6 +137,11 @@
 	</script>
 	<script type="text/javascript">
 		(function($, win, doc) {
+			var collect ;
+			var btn ;
+			var btn_save ;
+			var btn_cancel;
+			
 			if (win.plus) {
 				plusReady();
 			} else {
@@ -152,6 +157,12 @@
 			var time = 0;
 
 			function plusReady() {
+				 collect = doc.getElementById("collectorid");
+			 btn = doc.getElementById('button');
+			 btn_save = doc.getElementById('btn_save');
+			 btn_cancel = doc.getElementById('btn_cancel');
+				
+				
 				var cv = plus.webview.currentWebview();
 				doc.getElementById('intId').value = cv.intId;
 				document.getElementById("yjtype").value = cv.yjType;

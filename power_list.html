@@ -74,7 +74,7 @@
 							}
 							if(resultList == null || resultList.length < 1) {
 								mui('#pullrefresh').pullRefresh().endPullup(true);
-							mui.alert("没有查询信息");
+								mui.alert("没有查询信息");
 								return;
 							}
 							for(var i = 0; i < resultList.length; i++) {
@@ -89,6 +89,7 @@
 							count += 1;
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh(resultList.length < 20); //参数为true代表没有更多数据了。
 						} else {
+								mui('#pullrefresh').pullRefresh().endPullup(true);
 							mui.alert("没有数据了");
 						}
 					},

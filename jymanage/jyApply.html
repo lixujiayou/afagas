@@ -396,7 +396,7 @@
 
 					console.log("兼容android和ios的时间戳"+time1); //1398250549123
 
-					jy_apply_title.value = plus.storage.getItem("city") + plus.storage.getItem("country") + time1;
+//					jy_apply_title.value = plus.storage.getItem("city") + plus.storage.getItem("country") + time1;
 
 
 
@@ -406,12 +406,12 @@
 					jy_city.innerText = plus.storage.getItem("city");
 					countryId = plus.storage.getItem("m_county_id");
 					jy_country.innerText = plus.storage.getItem("country");
-					jy_apply_title.value = plus.storage.getItem("city") + plus.storage.getItem(
-											"country") + time1;		
+//					jy_apply_title.value = "plus.storage.getItem("city") + plus.storage.getItem(
+//											"country") "+ time1;		
+					jy_apply_title.value = "加油申请-"+ new Date().getTime();		
 					if (plus.storage.getItem("department") != "" && plus.storage.getItem("department") != null) {
 						jy_department.value = plus.storage.getItem("department");
 					}
-
 				};
 
 				//发起流程1
@@ -544,8 +544,6 @@
 							var data = JSON.parse(result);
 							if (true == data.success) {
 								var countryList = data.ctmRootList[0].children;
-
-
 								$.ready(function() {
 									/**
 									 * 获取对象属性的值
@@ -636,35 +634,28 @@
 
 
 								jy_city.addEventListener('tap', function(event) {
+									return;
 									newPicker.show(function(items) {
 										cityId = JSON.stringify(items[0].id).replace(/\"/g, "");
 										jy_city.innerText = JSON.stringify(items[0].text).replace(/\"/g, "");
-
-										jy_apply_title.value = JSON.stringify(items[0].text).replace(/\"/g, "") + plus.storage.getItem(
-											"country") + time1;
-
+										
+//										jy_apply_title.value = JSON.stringify(items[0].text).replace(/\"/g, "") + plus.storage.getItem(
+//											"country") + time1;
+											
 										gettypeList();
-
 										//返回 false 可以阻止选择框的关闭
 										//return false;
 									});
 								}, false);
+								gettypeList();
 								//-----------------------------------------
-
-
 							});
-
-
-
-
 						},
 						error: function(xhr, type, errorThrown) {
 							console.log("获取审批人error:" + xhr.response);
 							console.log("获取审批人error:" + xhr.status + url);
 						}
 					});
-
-
 				}
 
 				//获取区县
@@ -679,7 +670,6 @@
 						timeout: 10000 * 60,
 						data: {
 							parentId: cityId,
-
 						},
 						success: function(response) {
 							plus.nativeUI.closeWaiting();
@@ -694,29 +684,26 @@
 									'id': data[i].id,
 									'text': data[i].name
 								})
-
 							}
-
 
 							mui.ready(function() {
 								//普通示例
 								countryPicker.setData(countryList);
 								jy_country.addEventListener('tap', function(event) {
+									return;
 
 									countryPicker.show(function(items) {
 										countryId = items[0].id;
 										jy_country.innerText = items[0].text;
 
-										jy_apply_title.value = jy_city.innerText + items[0].text + time1;
-										// 
+//										jy_apply_title.value = jy_city.innerText + items[0].text + time1;
 										getyoukaList();
 										//返回 false 可以阻止选择框的关闭
 										//return false;
-
 									});
 								}, false);
+								getyoukaList();
 								//-----------------------------------------
-
 
 							});
 
@@ -764,10 +751,7 @@
 									'id': data[i].oilCardNo,
 									'text': data[i].cardAlias
 								})
-
 							}
-
-
 							var _getParam = function(obj, param) {
 								return obj[param] || '';
 							};
