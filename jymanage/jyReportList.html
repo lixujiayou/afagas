@@ -150,7 +150,7 @@
 
 						ul.id = i;
 
-						ul.innerHTML = '<li><b>油卡编号（副卡）</b><i>' + data.rows[i].fuelcardNo + '</i></li><li><b>预估加油量（L）</b><i>' + data
+						ul.innerHTML = '<li><b>工单主题</b><i>' + data.rows[i].gdTitle + '</i></li><li><b>油卡编号（副卡）</b><i>' + data.rows[i].fuelcardNo + '</i></li><li><b>预估加油量（L）</b><i>' + data
 							.rows[i].preEstimateFuelvolume + '</i></li>' +
 							'<li><b>申请时间</b><i>' + data.rows[i].applicantTime + '</i></li>' +
 							'<li><b>所属代维公司</b><i>' + data.rows[i].belongDaiweiCompany + '</i></li>';
@@ -217,7 +217,7 @@
 
 						ul.onclick = "listOnClick";
 
-						ul.innerHTML = '<li id = "aaaa"><b>油卡编号（副卡）</b><i>' + data.rows[i].fuelcardNo +
+						ul.innerHTML = '<li><b>工单主题</b><i>' + data.rows[i].gdTitle + '</i></li><li id = "aaaa"><b>油卡编号（副卡）</b><i>' + data.rows[i].fuelcardNo +
 							'</i></li><li><b>预估加油量（L）</b><i>' + data
 							.rows[i].preEstimateFuelvolume + '</i></li>' +
 							'<li><b>申请时间</b><i>' + data.rows[i].applicantTime + '</i></li>' +

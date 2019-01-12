@@ -622,7 +622,7 @@
 						console.log("查询照片返回==" + result);
 						var div = document.createElement('ul');
 						div.className = "mui-table-view mui-table-view-cell";
-						div.innerHTML = "<img data-preview-src='' data-preview-group='1'  class='mui-media-object mui-pull-left' src='" + imgList[0].url + "'><div class='mui-media-body'>图片<p class='mui-ellipsis'>名称：" + imgList[0].imgName + "</p></div>";
+						div.innerHTML = "<img data-preview-src='' data-preview-group='1'  class='mui-media-object mui-pull-left' src='" + imgList[0].url + "'><div class='mui-media-body'>图片</div>";
 						document.getElementById("tv_mys").appendChild(div);
 					},
 					error: function(xhr, type, errorThrown) {
