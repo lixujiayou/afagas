@@ -52,13 +52,13 @@
 		<div class="mui-content">
 			<div class="p5" style="margin-top: 55px;margin-bottom: 60px;">
 				<ul class="mui-table-view mui-grid-view mui-grid-3">
-					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+					<li class="mui-table-view-cell mui-media mui-col-xs-2" style="font-size: 13px;">
 						序号
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4" style="font-size: 13px;">
 						设备名称
 					</li>
-					<li class="mui-table-view-cell mui-media mui-col-xs-6">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6" style="font-size: 13px;">
 						油机编号
 					</li>
 				</ul>
@@ -70,10 +70,10 @@
 		
 		<div id="popover" class="mui-popover" style="width: 80%;height: 40%;">
 			<div style="margin-top: 10%;margin-left: 5%;">
-				<span style="font-size: 16px;">设备名称：<input id="sbmc" style="width: 60%;height: 40px;"/></span>
+				<span style="font-size: 13px;">设备名称：<input id="sbmc" style="width: 60%;height: 40px;font-size: 13px;"/></span>
 			</div>
 			<div style="margin-top: 10%;margin-left: 5%;">
-				<span style="font-size: 16px;">油机编号：<input id="yjbh" style="width: 60%;height: 40px;"/></span>
+				<span style="font-size: 13px;">油机编号：<input id="yjbh" style="width: 60%;height: 40px;font-size: 13px;"/></span>
 			</div>
 			<div style="margin-top: 20%;margin-left: 35%;">
 				<button id="btn_search" class="btn mui-btn-green btn-block" style="width: 40%;">确定</button>
@@ -102,13 +102,13 @@
 	</script> -->
 	<script id="table" type="text/html">
 		{{each machineList as machine}}
-		<li class="mui-table-view-cell mui-media mui-col-xs-2" id="{{machine.index}}">
+		<li class="mui-table-view-cell mui-media mui-col-xs-2" id="{{machine.index}}" style="font-size: 13px;">
 			{{machine.index}}
 		</li>
-		<li class="mui-table-view-cell mui-media mui-col-xs-4" id="{{machine.index}}">
+		<li class="mui-table-view-cell mui-media mui-col-xs-4" id="{{machine.index}}" style="font-size: 13px;">
 			{{machine.deviceName}}
 		</li>
-		<li class="mui-table-view-cell mui-media mui-col-xs-6" id="{{machine.index}}">
+		<li class="mui-table-view-cell mui-media mui-col-xs-6" id="{{machine.index}}" style="font-size: 13px;">
 			{{machine.yjCode}}
 		</li>
 		{{/each}}
@@ -132,12 +132,12 @@
 				'sbmc': sbmc,
 				'yjbh': yjbh
 				};
-			var btnybd = doc.getElementById("btn_ybd");
-			var btnwbd = doc.getElementById("btn_wbd");
-			var btnup = doc.getElementById('btn_up');
-			var btndown = doc.getElementById('btn_down');
-			var pagenum_input = doc.getElementById('pagenum');
-			var btnsearch = doc.getElementById('btn_search');
+			var btnybd ;
+			var btnwbd ;
+			var btnup ;
+			var btndown ;
+			var pagenum_input ;
+			var btnsearch ;
 			
 			mui.init({
 				swipeBack: false, //启用右滑关闭功能
@@ -158,6 +158,12 @@
 				}
 				
 				function plusReady() {
+					btnybd = doc.getElementById("btn_ybd");
+					btnwbd = doc.getElementById("btn_wbd");
+					btnup = doc.getElementById('btn_up');
+					btndown = doc.getElementById('btn_down');
+					pagenum_input = doc.getElementById('pagenum');
+					btnsearch = doc.getElementById('btn_search');
 // 					var tb = doc.body.querySelector("tbody");
 // 					var tr;
 					// selectOilMonitor(mstatus, pageNum);
@@ -167,6 +173,12 @@
 				
 				function initEventListener() {
 					btnybd.addEventListener('tap', function() {
+						if (btnwbd.classList.contains('btn-primary')) {
+							btnwbd.classList.remove('btn-primary');
+							btnwbd.classList.add('btn-default');
+						}
+						btnybd.classList.remove('btn-default');
+						btnybd.classList.add('btn-primary');
 						mstatus = 1;
 						pageNum = 0;
 						param['mstatus'] = mstatus;
@@ -175,6 +187,12 @@
 						selectOilMonitor(param);
 					});
 					btnwbd.addEventListener('tap', function() {
+						if (btnybd.classList.contains('btn-primary')) {
+							btnybd.classList.remove('btn-primary');
+							btnybd.classList.add('btn-default');
+						}
+						btnwbd.classList.remove('btn-default');
+						btnwbd.classList.add('btn-primary');
 						mstatus = 0;
 						pageNum = 0;
 						param['mstatus'] = mstatus;
@@ -233,27 +251,27 @@
 								id: "yjjkInfoBD",
 								url: "yjjkInfoBD.html",
 								extras: {
-									intId: data.machineList[index - 1].intId,
-									yjType: data.machineList[index - 1].yjType,
-									deviceName: data.machineList[index - 1].deviceName,
-									yjCode: data.machineList[index - 1].yjCode,
-									deviceCode: data.machineList[index - 1].deviceCode,
-									yjModel: data.machineList[index - 1].yjModel,
-									manuFacturer: data.machineList[index - 1].manuFacturer,
-									syDs: data.machineList[index - 1].syDs,
-									syQx: data.machineList[index - 1].syQx,
-									syDept: data.machineList[index - 1].syDept,
-									syDwCompany: data.machineList[index - 1].syDwCompany,
-									yjStatus: data.machineList[index - 1].yjStatus,
-									cqsx: data.machineList[index - 1].cqsx,
-									useOilType: data.machineList[index - 1].useOilType,
-									ratedPower: data.machineList[index - 1].ratedPower,
-									normOilWear: data.machineList[index - 1].normOilWear,
-									ratedConsumption: data.machineList[index - 1].ratedConsumption,
-									storagePlace: data.machineList[index - 1].storagePlace,
-									dutyPerson: data.machineList[index - 1].dutyPerson,
-									remark: data.machineList[index - 1].remark,
-									collectorid: data.machineList[index - 1].collectorId
+									intId: data.machineList[index - 20*pageNum - 1].intId,
+									yjType: data.machineList[index - 20*pageNum - 1].yjType,
+									deviceName: data.machineList[index - 20*pageNum - 1].deviceName,
+									yjCode: data.machineList[index - 20*pageNum - 1].yjCode,
+									deviceCode: data.machineList[index - 20*pageNum - 1].deviceCode,
+									yjModel: data.machineList[index - 20*pageNum - 1].yjModel,
+									manuFacturer: data.machineList[index - 20*pageNum - 1].manuFacturer,
+									syDs: data.machineList[index - 20*pageNum - 1].syDs,
+									syQx: data.machineList[index - 20*pageNum - 1].syQx,
+									syDept: data.machineList[index - 20*pageNum - 1].syDept,
+									syDwCompany: data.machineList[index - 20*pageNum - 1].syDwCompany,
+									yjStatus: data.machineList[index - 20*pageNum - 1].yjStatus,
+									cqsx: data.machineList[index - 20*pageNum - 1].cqsx,
+									useOilType: data.machineList[index - 20*pageNum - 1].useOilType,
+									ratedPower: data.machineList[index - 20*pageNum - 1].ratedPower,
+									normOilWear: data.machineList[index - 20*pageNum - 1].normOilWear,
+									ratedConsumption: data.machineList[index - 20*pageNum - 1].ratedConsumption,
+									storagePlace: data.machineList[index - 20*pageNum - 1].storagePlace,
+									dutyPerson: data.machineList[index - 20*pageNum - 1].dutyPerson,
+									remark: data.machineList[index - 20*pageNum - 1].remark,
+									collectorid: data.machineList[index - 20*pageNum - 1].collectorId
 								}
 							});
 						} else {
@@ -261,27 +279,27 @@
 								id: "yjjkInfoJB",
 								url: "yjjkInfoJB.html",
 								extras: {
-									intId: data.machineList[index - 1].intId,
-									yjType: data.machineList[index - 1].yjType,
-									deviceName: data.machineList[index - 1].deviceName,
-									yjCode: data.machineList[index - 1].yjCode,
-									deviceCode: data.machineList[index - 1].deviceCode,
-									yjModel: data.machineList[index - 1].yjModel,
-									manuFacturer: data.machineList[index - 1].manuFacturer,
-									syDs: data.machineList[index - 1].syDs,
-									syQx: data.machineList[index - 1].syQx,
-									syDept: data.machineList[index - 1].syDept,
-									syDwCompany: data.machineList[index - 1].syDwCompany,
-									yjStatus: data.machineList[index - 1].yjStatus,
-									cqsx: data.machineList[index - 1].cqsx,
-									useOilType: data.machineList[index - 1].useOilType,
-									ratedPower: data.machineList[index - 1].ratedPower,
-									normOilWear: data.machineList[index - 1].normOilWear,
-									ratedConsumption: data.machineList[index - 1].ratedConsumption,
-									storagePlace: data.machineList[index - 1].storagePlace,
-									dutyPerson: data.machineList[index - 1].dutyPerson,
-									remark: data.machineList[index - 1].remark,
-									collectorid: data.machineList[index - 1].collectorId
+									intId: data.machineList[index - 20*pageNum - 1].intId,
+									yjType: data.machineList[index - 20*pageNum - 1].yjType,
+									deviceName: data.machineList[index - 20*pageNum - 1].deviceName,
+									yjCode: data.machineList[index - 20*pageNum - 1].yjCode,
+									deviceCode: data.machineList[index - 20*pageNum - 1].deviceCode,
+									yjModel: data.machineList[index - 20*pageNum - 1].yjModel,
+									manuFacturer: data.machineList[index - 20*pageNum - 1].manuFacturer,
+									syDs: data.machineList[index - 20*pageNum - 1].syDs,
+									syQx: data.machineList[index - 20*pageNum - 1].syQx,
+									syDept: data.machineList[index - 20*pageNum - 1].syDept,
+									syDwCompany: data.machineList[index - 20*pageNum - 1].syDwCompany,
+									yjStatus: data.machineList[index - 20*pageNum - 1].yjStatus,
+									cqsx: data.machineList[index - 20*pageNum - 1].cqsx,
+									useOilType: data.machineList[index - 20*pageNum - 1].useOilType,
+									ratedPower: data.machineList[index - 20*pageNum - 1].ratedPower,
+									normOilWear: data.machineList[index - 20*pageNum - 1].normOilWear,
+									ratedConsumption: data.machineList[index - 20*pageNum - 1].ratedConsumption,
+									storagePlace: data.machineList[index - 20*pageNum - 1].storagePlace,
+									dutyPerson: data.machineList[index - 20*pageNum - 1].dutyPerson,
+									remark: data.machineList[index - 20*pageNum - 1].remark,
+									collectorid: data.machineList[index - 20*pageNum - 1].collectorId
 								}
 							});
 						}
@@ -290,7 +308,7 @@
 				
 				function selectOilMonitor(param) {
 					var searchurl = plus.storage.getItem("url") + "plugins/toilMonitor/toilmonitor/findMui.ilf";
-					//var searchurl = "http://183.224.28.130:9003/fdgl/plugins/toilMonitor/toilmonitor/findMui.ilf";
+					// var searchurl = "http://192.168.137.1:8080/persite/plugins/toilMonitor/toilmonitor/findMui.ilf";
 					mui.ajax({
 						url: searchurl,
 						type: 'post',
@@ -303,7 +321,7 @@
 						success: function(response) {
 							var result = JSON.stringify(response);
 							data = JSON.parse(result);
-							// console.log(data);
+							// console.log(data.machineList[0].index);
 							// 						var monitorList = data.monitorList;
 							// 						for (var monitor in monitorList) {
 							// 							tr = doc.createElement("tr");
