@@ -9,6 +9,8 @@
 		<link href="css/userStyle.css" rel="stylesheet" />
 		<link href="css/imageviewer.css" rel="stylesheet" />
 		<link href="css/media_components.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+
 		<style>
 			.mui-btn {
 				font-size: 16px;
@@ -29,6 +31,36 @@
 				text-align: center;
 				padding: 20px 10px;
 				font-size: 16px;
+			}
+			.jyapply_li_lable {
+				line-height: 30px;
+				font-size: 13px;
+				font-weight: normal;
+				display: inline-block;
+				margin-left: 28px;
+				color: #9ea4af;
+			}
+			
+			.jyapply_li_input {
+				font-size: 14px;
+				width: 50%;
+				height: 30px;
+				margin-left: 10px;
+				-webkit-user-select: auto;
+				color: #9ea4af;
+			}
+			
+			.jyapply_li_a {
+				color: #9ea4af;
+				font-size: 14px;
+				width: 50%;
+				height: 30px;
+				margin-left: 30px;
+				text-align: center;
+				line-height: 30px;
+				border: #103E5C;
+				border: 1px solid #999999;
+				padding: 3px 8px;
 			}
 		</style>
 	</head>
@@ -54,6 +86,10 @@
 
 				<ul class="user-info-list">
 					<div class="contitle">原因详情</div>
+					<li>
+							<b class="jyapply_li_lable">是否取消长期发电，直接归档:</b>
+							<a id="select_is_re" class="jyapply_li_a">请选择</a>
+						</li>
 					<li>
 						<label><i class="uicon ui-8"></i><span class="vm">机房名称：</span></label>
 						<div class="data">
@@ -82,14 +118,17 @@
 
 					<li>
 						<label><i class="uicon ui-4"></i><span class="vm">附件：</span></label>
-						<div id="tv_fujian" class=" btn btn-default" style="margin-top: 10px;">拍照</div>
+<!--						<div id="tv_fujian" class=" btn btn-default" style="margin-top: 10px;">拍照</div>
+-->						<a id="tv_fujian" class="jyapply_li_a">拍照</a>
+
 						<div id="tv_mys">
 							<!-- 拍照部分 -->
 							<div id="div_otherImgList5" style="padding: 10px;">
 								<div id="otherImgList5" style="bottom: 20px;"></div>
+								
 							</div>
 						</div>
-
+	
 					</li>
 
 					<li style="display: none;">
@@ -105,8 +144,13 @@
 			<script src="js/mui.previewimage.js"></script>
 			<script src="js/mui.zoom.js"></script>
 			<script src="js/md5.min.js"></script>
-
+			<script src="js/mui.picker.min.js"></script>
 			<script type="text/javascript">
+					(function($) {
+				$.init();
+				
+				
+				
 				document.addEventListener('f_file', function(event) {
 					var fileuri = plus.storage.getItem("file_uri");
 					//var hb_path = '_downloads/' + md5(fileuri) + '.jpg'; //HBuilder平台路径
@@ -133,17 +177,21 @@
 				var imgPath2;
 				var imgId = "";
 				var flowId = "";
-				var infoOb ;
+				var infoOb;
 				var time_aleray;
-				
+
 				var room_name;
 				var time_end;
 				var cause_text;
+				
+				var selectIsRe;
+		
 
 				mui.plusReady(function() {
+					selectIsRe = document.getElementById("select_is_re");
 					cause_text = document.getElementById("cause_text");
 					time_end = document.getElementById("time_end");
-					room_name  = document.getElementById("room_name");
+					room_name = document.getElementById("room_name");
 					tv_fujian = document.getElementById("tv_fujian");
 					tv_room = document.getElementById("tv_room");
 					tv_shenpiren2 = document.getElementById("tv_shenpiren2");
@@ -156,7 +204,22 @@
 
 					tv_shenpiren2.addEventListener("tap", function() {
 						mui.openWindow("selectAuditForPeopleForPower.html");
+});
+
+var userPicker = new $.PopPicker();
+userPicker.setData([{
+				value:'是',
+					text: '是'
+				}, {
+					value: '否',
+					text: '否'
+				}]);
+				selectIsRe.addEventListener("click", function() {
+					userPicker.show(function(items) {
+						selectIsRe.innerText = items[0].value;
 					});
+
+				}, false);
 
 					getDataInfo();
 
@@ -238,6 +301,16 @@
 				 * 提交
 				 */
 				function submitData() {
+					var mIsRange;
+					if(selectIsRe.innerText == "请选择"){
+						mui.toast("“是否取消长期发电，直接归档？”");
+						return;
+					}else if(selectIsRe.innerText == "是"){
+						mIsRange = true;
+					}else{
+						mIsRange = false;
+					}
+					
 					plus.nativeUI.showWaiting("正在提交...");
 					var url = plus.storage.getItem("url") + plus.storage.getItem("update_cqfd");
 					console.log("===" + url);
@@ -246,18 +319,20 @@
 					console.log("===" + time_end.value);
 					console.log("===" + cause_text.value);
 					console.log("===" + imgId);
+					console.log("===" + mIsRange);
 					mui.ajax(url, {
 						type: 'post',
-						
+
 						dataType: 'json',
 						timeout: 10000 * 60,
-												data: {
-													id: infoOb.id,
-													flowId:infoOb.flowId,
-													yjfdsc: time_end.value, //预计发电时长
-													powerReason:cause_text.value , //发电原因
-													attachment: imgId,
-												},
+						data: {
+							id: infoOb.id,
+							flowId: infoOb.flowId,
+							yjfdsc: time_end.value, //预计发电时长
+							powerReason: cause_text.value, //发电原因
+							attachment: imgId,
+							isRange:mIsRange,// true  false
+						},
 						success: function(response) {
 							plus.nativeUI.closeWaiting();
 							var result = JSON.stringify(response);
@@ -307,8 +382,7 @@
 							submitData();
 							// /	serialNumber=  data; 
 							console.log("流水号是++++" + imgId);
-							
-							
+
 						} else {
 							plus.nativeUI.closeWaiting();
 							console.log("上传机房及配套信息及图片的返回:" + status + url);
@@ -327,6 +401,7 @@
 					//task  上传文件 end
 
 				}
+				})(mui);
 			</script>
 		</body>
 
