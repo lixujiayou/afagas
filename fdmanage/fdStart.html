@@ -115,8 +115,6 @@
 
 			//页面增加一组油机
 			function onItemClick(pos) {
-
-
 				if (saveyj == false) {
 					mui.alert("请先保存新增的开关电源或油机数据");
 				} else {
@@ -452,14 +450,10 @@
 
 			//代维人员保存油机
 			function addEngine(typeInfoId) {
-				
-				
-				
 				if( document.getElementById("yjbh1111").value==""){
 					mui.alert("请输入油机名称");
 					return;
 				}
-				
 				if( document.getElementById("yjlsh1111").value==""){
 					mui.alert("请拍摄相关照片 ");
 					return;
@@ -606,12 +600,7 @@
 						console.log(xhr.status + url);
 						submitWating.close();
 					}
-
 				});
-
-
-
-
 			}
 
 			//开关油机
