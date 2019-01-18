@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<button id="btn" type="button" class="mui-btn mui-btn-blue">下一页</button>
+		<button id="btn_tab" type="button" class="mui-btn mui-btn-blue">刷新tab角标</button> 待受理
+		<script src="../js/mui.min.js"></script>
+		
+	</body>
+	<script type="text/javascript">
+		
+		mui.init();
+		
+		var btn;
+		var btn_tab;
+		mui.plusReady(function() {
+			btn = document.getElementById("btn");
+			btn_tab = document.getElementById("btn_tab");
+			btn.addEventListener("click", function() {
+				mui.openWindow("mytest.html"); 
+			});
+			btn_tab.addEventListener("click", function() {
+				var detailPage1 = plus.webview.getWebviewById('s_task.html');
+				mui.fire(detailPage1, "update_sub", ""); 
+				
+				var detailPage2 = plus.webview.getWebviewById('s_main.html');
+				mui.fire(detailPage2, "update_main", "");
+				
+			});
+		})
+
+		
+	</script>
+
+</html>

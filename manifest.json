@@ -296,7 +296,8 @@
 					"forget_password.html",
 					"main.html",
 					"reg.html",
-					"guide.html"
+					"guide.html",
+					"s_main.html"
 				],
 				"priority": 0
 			},
@@ -431,6 +432,34 @@
 				"resources": [],
 				"refer": [
 					"yjjk/barcode.html"
+				],
+				"priority": 0
+			},
+			"s_main.html": {
+				"resources": [
+					"s_task.html"
+				],
+				"refer": [
+					"s_find.html",
+					"s_task_2.html",
+					"s_mine.html"
+				],
+				"priority": 0
+			},
+			"s_task.html": {
+				"resources": [
+					"s_task/s_task_wait.html"
+				],
+				"refer": [
+					"s_task/s_task_already.html",
+					"s_task/s_task_complete.html"
+				],
+				"priority": 0
+			},
+			"s_task/s_task_wait.html": {
+				"resources": [],
+				"refer": [
+					"s_task/mytest.html"
 				],
 				"priority": 0
 			}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<button id="bt_back" type="button" class="mui-btn mui-btn-blue">返回刷新角标</button>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+	
+	<script type="text/javascript">
+		var bt_back;
+		mui.plusReady(function(){
+			bt_back = document.getElementById("bt_back");
+			bt_back.addEventListener("click",function(){
+				var detailPage1 = plus.webview.getWebviewById('s_task.html');
+				mui.fire(detailPage1, "update_sub", "");
+				
+				var detailPage2 = plus.webview.getWebviewById('s_main.html');
+				mui.fire(detailPage2, "update_main", "");
+				
+				mui.back();
+			})
+		})
+	</script>
+
+</html>

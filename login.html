@@ -374,7 +374,7 @@
 								var resultMy = data.result[0];
 								plus.storage.setItem("isJy", resultMy.isJy+"");
 								plus.storage.setItem("isFd", resultMy.isFd+"");
-								mui.openWindow({url:"main.html",id:"main.html", createNew:false})
+								mui.openWindow({url:"s_main.html",id:"s_main.html", createNew:false})
 								setTimeout(function(){plus.webview.currentWebview().close();},1000);
 							} else {
 								mui.alert("获取用户权限失败,请联系管理员");

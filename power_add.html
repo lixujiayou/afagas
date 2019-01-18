@@ -325,13 +325,13 @@ userPicker.setData([{
 
 						dataType: 'json',
 						timeout: 10000 * 60,
-						data: {
+						data: {`
 							id: infoOb.id,
 							flowId: infoOb.flowId,
 							yjfdsc: time_end.value, //预计发电时长
 							powerReason: cause_text.value, //发电原因
 							attachment: imgId,
-							isRange:mIsRange,// true  false
+							branchValue:mIsRange,// true  false
 						},
 						success: function(response) {
 							plus.nativeUI.closeWaiting();

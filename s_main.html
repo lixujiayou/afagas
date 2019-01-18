@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/userStyle2.css" />
+
+		<!--<link rel="stylesheet" href="css/pagestyle.css" />-->
+	</head>
+
+	<body>
+		<script src="js/mui.min.js"></script>
+		<script src="js/native_my.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" style="background-color: white;">
+			<a id="menu_search" style="display: none;" class="mui-action-menu mui-icon mui-icon-search mui-pull-left" href="workWaitMap.html"></a>
+			<h1 id="title" class="mui-title">待办任务</h1>
+			<a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="workWaitMap.html"></a>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="menu2" class="mui-tab-item mui-active" href="s_task.html">
+				<span class="mui-icon mui-icon-home"><span id="cicle_num" class="mui-badge mui-badge-red" style="display: none;"></span></span>
+				<span class="mui-tab-label">待办</span>
+			</a>
+			<a class="mui-tab-item" href="s_find.html">
+				<span class="mui-icon mui-icon-paperplane"></span>
+				<span class="mui-tab-label">发现</span>
+			</a>
+
+			<a class="mui-tab-item" href="s_mine.html">
+				<span class="mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+	</body>
+
+</html>
+<script type="text/javascript">
+	document.addEventListener('update_main', function(event) {
+		setBarge(12);
+	});
+
+	var titleBar;
+	var titleImg;
+	var titleSearchImg;
+	var menu2;
+	var subPageNums = ['0', '0', '0'];
+	var subPages = ['s_task.html', 's_find.html', 's_mine.html'];
+	var subPageStyle = {
+		top: '44px',
+		bottom: '50px'
+	}
+	var sub1;
+	var sub2;
+	var sub3;
+	var self;
+	var cicleNum;
+	//	mui.back = function() { 
+	//		console.log("====back2222222");
+	//	}
+
+	mui.plusReady(function() {
+		titleBar = document.getElementById("title");
+		menu2 = document.getElementById("menu2");
+		titleImg = document.getElementById("menu");
+		cicleNum = document.getElementById("cicle_num");
+		titleSearchImg = document.getElementById("menu_search");
+
+		self = plus.webview.currentWebview();
+
+		for(var i = 0; i < 1; i++) {
+			var sub = plus.webview.create(subPages[i], subPages[i], subPageStyle);
+			sub.hide();
+			self.append(sub);
+			subPageNums[i] = '1';
+		}
+
+		plus.webview.show(subPages[0]);
+		initClick();
+		setBarge(10);
+	})
+
+	function initClick() {
+		//0：待办  1：发现  2：我的
+		var selectWait = 0;
+		//绑定事件
+		mui(".mui-bar-tab").on("tap", "a", function(e) {
+			titleSearchImg.style.display = "none";
+			var tagPage = this.getAttribute("href");
+			var titleText = "";
+			if(tagPage == subPages[1]) {
+				if(subPageNums[1] == '0') {
+					sub1 = plus.webview.create(subPages[1], subPages[1], subPageStyle);
+					self.append(sub1);
+					subPageNums[1] = '1';
+				}
+				plus.webview.show(sub1, "fade-in", 100);
+				selectWait = 1;
+				titleText = "抄表";
+				titleImg.style.display = "block";
+				titleSearchImg.style.display = "block";
+				titleImg.className = 'mui-action-menu mui-icon mui-icon-camera mui-pull-right';
+
+			} else if(tagPage == subPages[2]) {
+				if(subPageNums[2] == '0') {
+					sub2 = plus.webview.create(subPages[2], subPages[2], subPageStyle);
+					self.append(sub2);
+					subPageNums[2] = '1';
+				}
+				plus.webview.show(sub2, "fade-in", 100);
+
+				titleText = "我的";
+				titleImg.className = 'mui-action-menu mui-icon mui-icon-gear mui-pull-right';
+				selectWait = 2;
+
+			} else {
+				if(numTest == 3) {
+					if(subPageNums[3] == '0') {
+						sub3 = plus.webview.create(subPages[3], subPages[3], subPageStyle);
+						self.append(sub3);
+						subPageNums[3] = '1';
+					}
+
+					plus.webview.show(sub3, "fade-in", 100);
+				} else {
+					plus.webview.show(subPages[numTest], "fade-in", 100);
+				}
+				selectWait = 0;
+				titleText = "待办任务";
+				titleImg.style.display = "block";
+				titleImg.className = 'mui-action-menu mui-icon mui-icon-bars mui-pull-right';
+			}
+			titleBar.innerText = titleText;
+		})
+
+		var numTest = 0;
+		titleImg.addEventListener("click", function() {
+			if(selectWait == 0) {
+				if(numTest == 0) {
+					if(subPageNums[3] == '0') {
+						sub3 = plus.webview.create(subPages[3], subPages[3], subPageStyle);
+						self.append(sub3);
+						subPageNums[3] = '1';
+					}
+					plus.webview.show(sub3, "fade-in", 100);
+					numTest = 3;
+				} else {
+					numTest = 0;
+					plus.webview.show(subPages[numTest], "fade-in", 100);
+				}
+			} else if(selectWait == 1) {
+				mui.openWindow('workGo.html')
+
+			} else if(selectWait == 2) {
+				mui.openWindow('my/setting.html');
+			}
+
+		});
+
+	}
+
+	function setBarge(num) {
+		cicleNum.style.display = "block";
+		cicleNum.innerText = num;
+	}
+</script>
